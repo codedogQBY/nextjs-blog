@@ -1,0 +1,18 @@
+@import './_mixin.scss';
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(59, 64, 77);
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}

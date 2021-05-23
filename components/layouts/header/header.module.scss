@@ -1,0 +1,12 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+.header {
+  @include flexBox(space-between, center);
+  padding: 0 $size-width3;
+}
+.search-box {
+  @include flexBox(flex-end, center);
+  width: 100%;
+  cursor: pointer;
+  transform: translateZ(0);
+}

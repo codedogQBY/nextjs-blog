@@ -1,0 +1,178 @@
+/**
+* 溢出省略号
+* @param {Number} 行数
+*/
+@mixin ellipsis($rowCount: 1) {
+  @if $rowCount <=1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $rowCount;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// position居中
+@mixin position-center($direction: both) {
+  position: absolute;
+  @if $direction == both {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+  } @else if $direction == horizontal {
+    left: 50%;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  } @else if $direction == vertical {
+    top: 50%;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+// flex居中
+@mixin flex-center($direction: both) {
+  display: flex;
+  @if $direction == both {
+    justify-content: center;
+    align-items: center;
+  } @else if $direction == horizontal {
+    justify-content: center;
+  } @else if $direction == vertical {
+    align-items: center;
+  }
+}
+
+// 全屏大图背景
+@mixin fullscreen-bg($url) {
+  width: 100vw;
+  height: 100vh;
+  background: url($url) no-repeat 50% 50%;
+  background-size: cover;
+}
+
+/*弹性盒子（传入null不设置该属性）*/
+@mixin flexBox(
+  $justify: null,
+  $align: null,
+  $flex-wrap: null,
+  $direction: row
+) {
+  display: flex;
+  @if ($direction!=null) {
+    flex-direction: $direction;
+  }
+  @if ($justify!=null) {
+    justify-content: $justify;
+  }
+  @if ($align!=null) {
+    align-items: $align;
+  }
+  @if ($flex-wrap != null) {
+    flex-wrap: $flex-wrap;
+  }
+}
+
+/*绝对定位  参数顺序：上右下左*/
+@mixin positionAbsolute($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+  @if ($left!= '' & & $left!=null) {
+    left: $left;
+  }
+  @if ($right!= '' & & $right!=null) {
+    right: $right;
+  }
+  @if ($top!= '' & & $top!=null) {
+    top: $top;
+  }
+  @if ($bottom!= '' & & $bottom!=null) {
+    bottom: $bottom;
+  }
+}
+
+/* 定义滚动条样式 圆角和阴影不需要则传入null */
+@mixin scrollBar(
+  $width: 10px,
+  $height: 10px,
+  $outColor: black,
+  $innerColor: white,
+  $radius: 5px,
+  $shadow: null
+) {
+  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $height;
+    background-color: $outColor;
+  }
+
+  /*定义滚动条轨道 内阴影+圆角*/
+  &::-webkit-scrollbar-track {
+    @if ($shadow!=null) {
+      -webkit-box-shadow: $shadow;
+    }
+    @if ($radius!=null) {
+      border-radius: $radius;
+    }
+    background-color: $outColor;
+  }
+
+  /*定义滑块 内阴影+圆角*/
+  &::-webkit-scrollbar-thumb {
+    @if ($shadow!=null) {
+      -webkit-box-shadow: $shadow;
+    }
+    @if ($radius!=null) {
+      border-radius: $radius;
+    }
+    background-color: $innerColor;
+    border: 1px solid $innerColor;
+  }
+}
+
+/* css3动画 默认3s宽度到200px */
+@mixin animation(
+  $from: (
+    width: 0px,
+  ),
+  $to: (
+    width: 200px,
+  ),
+  $name: mymove,
+  $animate: mymove 2s 1 linear infinite
+) {
+  -webkit-animation: $animate;
+  -o-animation: $animate;
+  animation: $animate;
+  @keyframes #{$name} {
+    from {
+      @each $key, $value in $from {
+        #{$key}: #{$value};
+      }
+    }
+    to {
+      @each $key, $value in $to {
+        #{$key}: #{$value};
+      }
+    }
+  }
+
+  @-webkit-keyframes #{$name} {
+    from {
+      @each $key, $value in $from {
+        $key: $value;
+      }
+    }
+    to {
+      @each $key, $value in $to {
+        $key: $value;
+      }
+    }
+  }
+}

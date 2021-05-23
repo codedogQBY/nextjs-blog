@@ -1,0 +1,37 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+.nav-box {
+  @include flexBox(flex-start, center);
+}
+.nav-item {
+  padding: $size-width2 $size-width3;
+  cursor: pointer;
+  &:hover {
+    .sub-nav {
+      height: $size-width2 * 8 + 20.8 * 4;
+    }
+  }
+  > a {
+    &:hover {
+      color: rgb(200, 200, 200);
+    }
+  }
+  > .sub-nav {
+    overflow: hidden;
+    height: 0;
+    transition: height 1s;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    background: rgb(39, 42, 51);
+    > .sub-nav-item {
+      width: 48px;
+      padding: $size-width2;
+      display: inline-block;
+      cursor: pointer;
+      &:hover {
+        background: rgb(38, 63, 139);
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import './_mixin.scss';
+// 居中
+$position-direction: both, horizontal, vertical;
+.position-relative {
+  position: relative;
+}
+@each $direction in $position-direction {
+  .position-center-#{$direction} {
+    @include position-center($direction);
+  }
+  .flex-center-#{$direction} {
+    @include flex-center($direction);
+  }
+}
+// 文本溢出 支持1-10行
+@for $i from 1 to 10 {
+  .ellipsis-#{$i} {
+    @include ellipsis($i);
+  }
+}
+
+// 禁用文字选中
+.user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// 禁用元素事件
+.pointer-events {
+  pointer-events: none;
+}
+
+// 美化选中文本
+.beauty-select {
+  &::selection {
+    color: #fff;
+    background-color: #9fd465;
+    text-shadow: none;
+  }
+}
+
+// 清除浮动
+.clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
