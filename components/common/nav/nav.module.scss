@@ -11,11 +11,6 @@
       height: $size-width2 * 8 + 20.8 * 4;
     }
   }
-  > a {
-    &:hover {
-      color: rgb(200, 200, 200);
-    }
-  }
   > .sub-nav {
     overflow: hidden;
     height: 0;
@@ -25,7 +20,7 @@
     text-align: center;
     background: rgb(39, 42, 51);
     > .sub-nav-item {
-      width: 48px;
+      width: 3rem;
       padding: $size-width2;
       display: inline-block;
       cursor: pointer;

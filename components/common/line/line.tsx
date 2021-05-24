@@ -1,15 +1,18 @@
 import { FC } from 'react'
+import classnames from 'classnames'
 interface LineProps {
   color?: string
   height?: number
   scale?: number
   width?: string
+  className?: string
 }
 
-const Line: FC<LineProps> = ({ color, height, scale, width }) => {
+const Line: FC<LineProps> = ({ color, height, scale, width, className }) => {
+  const classes = classnames('line', className)
   return (
     <>
-      <div className='line'></div>
+      <div className={classes}></div>
       <style jsx>
         {`
           .line {

@@ -1,0 +1,18 @@
+@import '../../../styles/mixin';
+@import '../../../styles//variables';
+.footer-box {
+  position: relative;
+  width: 45rem;
+  margin: 0 auto;
+  .footer-content {
+    @include flex-center('both');
+    margin-bottom: $size-width2;
+  }
+  .point {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin: 0 $size-width2;
+    background-color: #b7b7b7;
+  }
+}

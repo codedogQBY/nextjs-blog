@@ -100,8 +100,8 @@
 @mixin scrollBar(
   $width: 10px,
   $height: 10px,
-  $outColor: black,
-  $innerColor: white,
+  $outColor: rgb(253, 251, 251),
+  $innerColor: rgb(126, 125, 125),
   $radius: 5px,
   $shadow: null
 ) {

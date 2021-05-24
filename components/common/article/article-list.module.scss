@@ -1,0 +1,33 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+.list-box {
+  position: relative;
+  margin-bottom: $size-width1 * 7;
+  .title {
+    > a {
+      color: #d3d3d3;
+    }
+    @include ellipsis(1);
+  }
+  .introduction {
+    min-height: 4rem;
+    color: #c0c0c0;
+    @include ellipsis(4);
+  }
+  .meta {
+    color: #a7a7a7;
+    font-size: 0.8rem;
+    margin-bottom: $size-width4;
+    span {
+      display: inline-block;
+      margin: $size-width1;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  .line-bottom {
+    position: relative;
+    left: -4rem;
+  }
+}
