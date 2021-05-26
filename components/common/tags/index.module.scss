@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 .tag-item {
   float: left;
-  margin: $size-width2;
+  margin: $size-width1 / 2 $size-width2;
   a {
     display: block;
     padding: 0.4rem;

@@ -25,7 +25,7 @@ const Line: FC<LineProps> = ({ color, height, scale, width, className }) => {
   )
 }
 Line.defaultProps = {
-  color: 'white',
+  color: '#ebebeb',
   height: 1,
   width: '100%',
 }

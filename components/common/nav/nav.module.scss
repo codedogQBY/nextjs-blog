@@ -8,7 +8,7 @@
   cursor: pointer;
   &:hover {
     .sub-nav {
-      height: $size-width2 * 8 + 20.8 * 4;
+      height: $size-width2 * 8 + 20 * 4;
     }
   }
   > .sub-nav {
@@ -21,6 +21,7 @@
     text-align: center;
     background: rgb(26, 27, 29);
     > .sub-nav-item {
+      cursor: pointer;
       width: 3rem;
       padding: $size-width2;
       display: inline-block;

@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background: rgb(40, 44, 50);
-  color: white;
+  color: #ebebeb;
   @include scrollBar($width: 5px);
 }
 header {
@@ -26,7 +26,7 @@ header {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #ebebeb;
   &:hover {
     color: rgb(200, 200, 200);
   }
