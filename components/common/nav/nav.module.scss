@@ -16,16 +16,17 @@
     height: 0;
     transition: height 1s;
     position: absolute;
+    z-index: 100;
     left: 0;
     text-align: center;
-    background: rgb(39, 42, 51);
+    background: rgb(26, 27, 29);
     > .sub-nav-item {
       width: 3rem;
       padding: $size-width2;
       display: inline-block;
       cursor: pointer;
       &:hover {
-        background: rgb(38, 63, 139);
+        background: rgb(88, 89, 92);
       }
     }
   }

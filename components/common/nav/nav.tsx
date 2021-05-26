@@ -40,9 +40,9 @@ const Nav = () => {
               <ul className={style['sub-nav']}>
                 {item.children.map((child) => {
                   return (
-                    <li key={child.name} className={style['sub-nav-item']}>
-                      <Link href={child.url}>{child.name}</Link>
-                    </li>
+                    <Link key={child.name} href={child.url}>
+                      <li className={style['sub-nav-item']}>{child.name}</li>
+                    </Link>
                   )
                 })}
               </ul>
