@@ -4,8 +4,19 @@
   @include flexBox(space-between, center);
   padding: 0 $size-width3;
 }
+
 .search-box {
   width: 100%;
   cursor: pointer;
   transform: translateZ(0);
+  .icon-RectangleCopy2 {
+    font-size: 24px;
+  }
+}
+
+// 移动
+@media (max-width: 500px) {
+  .header {
+    padding: 0 $size-width1;
+  }
 }

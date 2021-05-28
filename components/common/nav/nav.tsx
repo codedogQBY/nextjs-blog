@@ -21,6 +21,7 @@ const Nav = () => {
         { name: '规划', url: '/plan' },
       ],
     },
+    { name: '日记', url: '/diary' },
     { name: '推荐', url: '/recommend' },
     { name: '友链', url: '/friend' },
     { name: '留言', url: '/wall' },

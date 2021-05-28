@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import ArticleListItem from '../../components/common/article/article-list-item'
 import codeArtcles from '../../api/codeArtcles.json'
 import moment from 'moment'
+import Loading from '../../components/common/loading/loading'
 
 const Code = () => {
   const artclesInfo = JSON.parse(JSON.stringify(codeArtcles))
@@ -12,33 +13,24 @@ const Code = () => {
   const [data, setData] = useState([])
   const [page, setPage] = useState(0)
   const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    setData(artclesList.slice(0, 3))
-  }, [])
   const getMoreData = () => {
     setLoading(true)
+    const newArtcles = [...data, ...artclesList.slice(page * 3, (page + 1) * 3)]
     const newPage = page + 1
-    const newArtcles = [
-      ...data,
-      ...artclesList.slice(newPage * 3, (newPage + 1) * 3),
-    ]
     if (newArtcles.length >= total) setHasMore(false)
     setData(newArtcles)
-    setPage(newPage)
-    setLoading(false)
+    setTimeout(() => {
+      setPage(newPage)
+      setLoading(false)
+    }, 1000)
   }
   return (
     <>
       <InfiniteScroll
-        initialLoad={false}
+        initialLoad={true}
         pageStart={0}
         loadMore={getMoreData}
         hasMore={!loading && hasMore}
-        loader={
-          <div className='loader' key={0}>
-            Loading ...
-          </div>
-        }
       >
         {data.map((item) => {
           return (
@@ -53,6 +45,7 @@ const Code = () => {
             />
           )
         })}
+        {loading && hasMore && <Loading />}
       </InfiniteScroll>
     </>
   )

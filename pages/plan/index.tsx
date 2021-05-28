@@ -11,16 +11,10 @@ const Plan = () => {
   const [data, setData] = useState([])
   const [page, setPage] = useState(0)
   const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    setData(artclesList.slice(0, 3))
-  }, [])
   const getMoreData = () => {
     setLoading(true)
+    const newArtcles = [...data, ...artclesList.slice(page * 3, (page + 1) * 3)]
     const newPage = page + 1
-    const newArtcles = [
-      ...data,
-      ...artclesList.slice(newPage * 3, (newPage + 1) * 3),
-    ]
     if (newArtcles.length >= total) setHasMore(false)
     setData(newArtcles)
     setPage(newPage)
@@ -29,7 +23,7 @@ const Plan = () => {
   return (
     <>
       <InfiniteScroll
-        initialLoad={false}
+        initialLoad={true}
         pageStart={0}
         loadMore={getMoreData}
         hasMore={!loading && hasMore}

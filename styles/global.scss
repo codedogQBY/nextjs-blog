@@ -18,10 +18,12 @@ header {
   background: rgb(40, 44, 50);
 }
 .container {
+  display: block;
   width: 45rem;
   margin: 0 auto;
   margin-top: $size-width1 * 12;
   min-height: calc(100vh - 148px);
+  transform: translateZ(0);
 }
 
 a {
@@ -35,4 +37,20 @@ a {
 ul {
   padding: 0;
   list-style: none;
+}
+
+// 平板端
+@media (max-width: 800px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+}
+
+// 移动
+@media (max-width: 500px) {
+  .container {
+    margin-top: $size-width1 * 8;
+    width: 25rem;
+  }
 }

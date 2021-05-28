@@ -2,8 +2,9 @@ import type { AppProps /*, AppContext */ } from 'next/app'
 import { useEffect } from 'react'
 import '../styles/global.scss'
 import '../public/iconfont/iconfont.css'
-import Header from '../components/layouts/header/header'
+import Head from '../components/layouts/header/header'
 import Footer from '../components/layouts/footer/footer'
+import Header from 'next/head'
 export default function App({ Component, pageProps }: AppProps) {
   const handleCopy = () => {
     // 获取选区部分
@@ -42,7 +43,14 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [])
   return (
     <>
-      <Header />
+      <Header>
+        <title>我的博客</title>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+        ></meta>
+      </Header>
+      <Head />
       <div className='container'>
         <Component {...pageProps} />
       </div>

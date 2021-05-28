@@ -32,3 +32,10 @@
     }
   }
 }
+
+// 移动
+@media (max-width: 500px) {
+  .nav-item {
+    padding: $size-width2 $size-width1;
+  }
+}

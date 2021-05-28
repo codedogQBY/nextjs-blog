@@ -30,4 +30,10 @@
     position: relative;
     left: -4rem;
   }
+  // 移动
+  @media (max-width: 500px) {
+    .line-bottom {
+      left: -2rem;
+    }
+  }
 }

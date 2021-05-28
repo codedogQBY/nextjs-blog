@@ -2,7 +2,7 @@
 @import '../../../styles//variables';
 .footer-box {
   position: relative;
-  width: 45rem;
+  // width: 45rem;
   margin: 0 auto;
   .footer-content {
     @include flex-center('both');
@@ -14,5 +14,13 @@
     height: 3px;
     margin: 0 $size-width2;
     background-color: #b7b7b7;
+  }
+  // 移动
+  @media (max-width: 500px) {
+    .point {
+      width: 3px;
+      height: 3px;
+      margin: 0 $size-width1;
+    }
   }
 }

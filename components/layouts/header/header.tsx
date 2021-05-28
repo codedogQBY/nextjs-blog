@@ -33,7 +33,9 @@ const Header = () => {
           <Nav />
         </div>
         <div className={style['header-right']}>
-          <Icon icon='icon-RectangleCopy2' />
+          <div className={style['search-box']}>
+            <Icon icon='icon-RectangleCopy2' />
+          </div>
         </div>
       </div>
       <Line width='100%' height={1} scale={0.5} color='#282c35' />
