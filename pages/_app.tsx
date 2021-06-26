@@ -5,6 +5,11 @@ import '../public/iconfont/iconfont.css'
 import Head from '../components/layouts/header/header'
 import Footer from '../components/layouts/footer/footer'
 import Header from 'next/head'
+import { Provider } from '@redux-model/react';
+import { store } from '../store/store'
+import { tagModel } from '../store/model' 
+
+
 export default function App({ Component, pageProps }: AppProps) {
   const handleCopy = () => {
     // 获取选区部分
@@ -35,14 +40,15 @@ export default function App({ Component, pageProps }: AppProps) {
     }, 0)
   }
   // 复制添加版权
-  useEffect(() => {
+  useEffect(() => {    
+    tagModel.getTag()
     window.addEventListener('copy', handleCopy)
     return () => {
       window.removeEventListener('copy', handleCopy)
     }
   }, [])
   return (
-    <>
+    <Provider store={store}>
       <Header>
         <title>我的博客</title>
         <meta
@@ -55,6 +61,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </div>
       <Footer />
-    </>
+    </Provider>
   )
 }

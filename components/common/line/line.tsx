@@ -12,10 +12,11 @@ const Line: FC<LineProps> = ({ color, height, scale, width, className }) => {
   const classes = classnames('line', className)
   return (
     <>
-      <div className={classes}></div>
+      <span className={classes}></span>
       <style jsx>
         {`
           .line {
+            display: inline-block;
             background-color: ${color};
             height: ${height}px;
             ${scale && `transform: scaleY(${scale})`};

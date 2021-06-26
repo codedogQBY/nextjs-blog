@@ -1,17 +1,18 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Tags from '../components/common/tags'
 import Line from '../components/common/line/line'
 import Year from '../components/common/year/year'
-import allArtcles from '../api/allArtcles.json'
-import { YearProps } from '../components/common/year/year'
+import {sietmapModel} from '../store/model'
 export default function Home() {
-  const artclesInfo = JSON.parse(JSON.stringify(allArtcles))
-  const artcles = artclesInfo?.result as YearProps[]
+  const articles = sietmapModel.useData(data=>data.art)
+  useEffect(()=>{
+    sietmapModel.getSitemap()
+  },[])
   return (
     <>
       <Tags />
       <Line />
-      {artcles.map((item) => {
+      {articles.map((item) => {
         return (
           <Year
             key={item.year}

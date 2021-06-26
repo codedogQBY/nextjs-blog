@@ -1,5 +1,5 @@
 const Diary = () => {
-  return <>日记</>
+  return <><button>日记</button></>
 }
 
 export default Diary

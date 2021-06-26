@@ -1,51 +1,53 @@
 import { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import ArticleListItem from '../../components/common/article/article-list-item'
-import planArtcles from '../../api/planArtcles.json'
-import moment from 'moment'
+import Loading from '../../components/common/loading/loading'
+import { getArts } from '../../api'
 const Plan = () => {
-  const artclesInfo = JSON.parse(JSON.stringify(planArtcles))
-  const artclesList = artclesInfo?.result?.list
-  const total = artclesInfo?.result?.pagination?.total
   const [hasMore, setHasMore] = useState(true)
   const [data, setData] = useState([])
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    getArts({
+      type: 3,
+      current_page: 1,
+      page_size: 5
+    }).then(res=>{
+      setData(res.result.list)
+    })
+  }, [])
   const getMoreData = () => {
     setLoading(true)
-    const newArtcles = [...data, ...artclesList.slice(page * 3, (page + 1) * 3)]
     const newPage = page + 1
-    if (newArtcles.length >= total) setHasMore(false)
-    setData(newArtcles)
-    setPage(newPage)
-    setLoading(false)
+    getArts({
+      type: 3,
+      current_page: newPage,
+      page_size: 5
+    }).then(res=>{
+      const {current_page,total_page} = res.result.pagination 
+      setPage(current_page)
+      setData(data.concat(res.result.list))
+      setLoading(false)
+      if(newPage >= total_page){
+        setLoading(false)
+        setHasMore(false)
+      }
+    })
   }
   return (
     <>
       <InfiniteScroll
-        initialLoad={true}
-        pageStart={0}
+        initialLoad={false}
+        pageStart={1}
         loadMore={getMoreData}
         hasMore={!loading && hasMore}
-        loader={
-          <div className='loader' key={0}>
-            Loading ...
-          </div>
-        }
       >
         {data.map((item) => {
-          return (
-            <ArticleListItem
-              key={item['_id']}
-              id={item['_id']}
-              title={item['title']}
-              introduction={item['descript']}
-              date={moment(item.update_at).format('YYYY-MM-DD')}
-              comments={item['meta'].comments}
-              like={item['meta'].likes}
-            />
-          )
+          return <ArticleListItem key={item.id} article={item} />
         })}
+        {loading && hasMore && <Loading />}
       </InfiniteScroll>
     </>
   )

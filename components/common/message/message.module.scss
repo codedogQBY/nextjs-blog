@@ -1,0 +1,42 @@
+@import '../../../styles/_variables.scss';
+
+.message {
+  min-width: 200px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-align: center;
+  transform: translate3d(-50%, -5px, 0);
+  animation: move 3s;
+}
+.message-success {
+  background: lighten($success, 50%);
+  color: $success;
+}
+.message-error {
+  background: lighten($danger, 40%);
+  color: $danger;
+}
+.message-info {
+  background: lighten($info, 50%);
+  color: $info;
+}
+.message-warning {
+  background: lighten($warning, 40%);
+  color: $warning;
+}
+
+@keyframes move {
+  0%,
+  100% {
+    transform: translate3d(-50%, -5px, 0);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 1;
+  }
+}
