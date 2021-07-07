@@ -2,7 +2,7 @@ import { useEffect, RefObject } from 'react';
 // 判断鼠标是否点击组件外部
 
 const useClickOutsize = (
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | HTMLUListElement>,
   handleFunction: Function,
 ) => {
   useEffect(() => {

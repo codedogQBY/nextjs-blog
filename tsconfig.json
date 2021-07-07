@@ -21,9 +21,10 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "config.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "config.js",
+    "untils/highlight.js",
+    "untils/marked.js"
+  ],
+  "exclude": ["node_modules"]
 }

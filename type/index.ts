@@ -95,6 +95,24 @@ export interface Hero extends Common {
     icp: string
   }
 
+  // 友链
+  export interface Link extends Common {
+  // 友链名称
+  name: string
+
+  // 链接
+  url: string
+
+  // 签名
+  slogan?: string;
+
+  // 头像
+  gravatar: string;
+
+  // 邮箱地址
+  email?: string
+  }
+
   // 评论
   export interface Comment extends Common {
 

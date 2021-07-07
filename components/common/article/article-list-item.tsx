@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC,memo } from 'react'
 import Link from 'next/link'
 import style from './article-list.module.scss'
 import Line from '../line/line'
@@ -28,4 +28,4 @@ const ArticleListItem: FC<{article:Article}> = (props) => {
   )
 }
 
-export default ArticleListItem
+export default memo(ArticleListItem)

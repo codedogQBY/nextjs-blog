@@ -8,7 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
     "@redux-model/react": "^9.0.4",
+    "gravatar": "^1.8.1",
+    "highlight.js": "^11.0.1",
+    "marked": "^2.1.3",
     "moment": "^2.29.1",
     "next": "^10.0.0",
     "react": "^16.13.1",
@@ -16,6 +20,7 @@
     "react-infinite-scroller": "^1.2.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
     "@types/react": "^17.0.6",
     "sass": "^1.34.0",
     "typescript": "^4.2.4"

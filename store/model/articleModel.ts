@@ -183,6 +183,8 @@ class ArticleModel extends Model<Data> {
       page_size: 4
     })
     this.SET_RELATIVE_ART_LIST(list.result.list || [])
+    console.log(this.data.relativeList);
+    
   })
 
   // 喜欢文章

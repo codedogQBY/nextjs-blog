@@ -26,3 +26,61 @@ $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
 $danger: $red !default;
+
+// cdn path
+// $cdn-path: https://static.jkchao.cn/_nuxt
+
+// container
+$container-left: 50rem;
+$container-min-width: $container-left;
+$container-width: $container-min-width;
+$container-right: 16rem;
+
+
+$gravatar: 36px;
+$header-height: 4rem;
+
+$module-bg: rgba(#282c35,0.6);
+$module-hover-bg: rgba(#d3d3d3,.12);
+$module-hover-bg-light-3: hsla(0,0%,100%,0.12);
+$module-hover-bg-light-6: hsla(0,0%,100%,0.12);
+
+// color
+// $white: var(--theme-white);
+// $black: var(--theme-black);
+// $green: var(--theme-green);
+// $blue: var(--theme-primary);
+// $red: var(--theme-red);
+
+$red-light-1: var(--theme-red-light-1);
+
+
+$border-color: var(--border-color);
+$form-hover: #8391a5;
+$code-bg: #191c1f;
+
+//text
+$text: silver;
+$dividers: #fff;
+$disabled: #fff;
+// $secondary: var(--text-dark-1);
+$descript: #dadada;
+
+// radius
+$radius: 4px;
+
+// padding
+$br: 4px;
+$xs-pad: .3rem;
+$sm-pad: .5rem;
+$normal-pad: 1rem;
+$md-pad: 1.2rem;
+$lg-pad: 1.5rem;
+$mlg-pad: 2rem;
+$xlg-pad: 3rem;
+
+// font-sisze
+$font-size-base: 14px;
+$font-size-title: 2rem;
+$font-size-large: 1.6rem;
+$font-size-small: .85rem;

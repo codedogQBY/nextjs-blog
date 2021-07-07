@@ -1,3 +1,4 @@
+import React,{FC} from 'react'
 import type { AppProps /*, AppContext */ } from 'next/app'
 import { useEffect } from 'react'
 import '../styles/global.scss'
@@ -8,9 +9,11 @@ import Header from 'next/head'
 import { Provider } from '@redux-model/react';
 import { store } from '../store/store'
 import { tagModel } from '../store/model' 
+import {linkModel} from '../store/model'
+import '../styles/article.scss'
 
 
-export default function App({ Component, pageProps }: AppProps) {
+const App : FC<AppProps> = ({ Component, pageProps }: AppProps)=>{
   const handleCopy = () => {
     // 获取选区部分
     const selection = window.getSelection()
@@ -42,6 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
   // 复制添加版权
   useEffect(() => {    
     tagModel.getTag()
+    linkModel.getLink()
     window.addEventListener('copy', handleCopy)
     return () => {
       window.removeEventListener('copy', handleCopy)
@@ -64,3 +68,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Provider>
   )
 }
+
+export default App

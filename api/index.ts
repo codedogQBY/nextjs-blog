@@ -1,10 +1,10 @@
-import { AxiosPromise } from 'axios'
 import { AjaxResponse, State } from '../type'
 import request from '../untils/request'
+import { Link } from '../type'
 
 // 获取博主信息
 export function getInfo() {
-  return request({
+  return request<AjaxResponse>({
     url: '/auth',
     method: 'get'
   })
@@ -12,7 +12,7 @@ export function getInfo() {
 
 // 获取网站配置项
 export function getOpt() {
-  return request({
+  return request<AjaxResponse>({
     url: '/option',
     method: 'get'
   })
@@ -20,7 +20,7 @@ export function getOpt() {
 
 // 留言墙列表
 export function getHero(params: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/hero',
     method: 'get',
     params
@@ -29,7 +29,7 @@ export function getHero(params: any) {
 
 // 增加英雄榜
 export function postHero(data: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/hero',
     method: 'post',
     data
@@ -81,7 +81,7 @@ export function getArt( id: string ) {
 
 // 文章点赞
 export function likeArt(data) {
-  return request({
+  return request<AjaxResponse>({
     url: '/like',
     method: 'post',
     data
@@ -89,7 +89,7 @@ export function likeArt(data) {
 }
 // 获取日记
 export function getDiary(params: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/diary',
     method: 'get',
     params
@@ -97,7 +97,7 @@ export function getDiary(params: any) {
 }
 // 日记点赞
 export function likeDiary(data: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/like',
     method: 'post',
     data
@@ -105,7 +105,7 @@ export function likeDiary(data: any) {
 }
 // 获取评价
 export function getComment(params: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/comment',
     method: 'get',
     params
@@ -114,7 +114,7 @@ export function getComment(params: any) {
 
 // 提交评价
 export function postComment(data: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/comment',
     method: 'post',
     data
@@ -123,7 +123,7 @@ export function postComment(data: any) {
 
 // 评论点赞
 export function likeComment(data: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/like',
     method: 'post',
     data
@@ -132,9 +132,19 @@ export function likeComment(data: any) {
 
 // 获取友链
 export function getLink(params: any) {
-  return request({
+  return request<AjaxResponse>({
     url: '/link',
     method: 'get',
     params
   })
+}
+
+// 增加友链
+// 增加友链
+export function postLink(data:Link) {
+  return request<AjaxResponse>({
+    url: `/link`,
+    method: 'post',
+    data
+  });
 }
