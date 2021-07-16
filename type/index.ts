@@ -6,6 +6,7 @@ export interface Pagination {
   page_size?: number
   total?: number
   total_page?: number
+  sort?: number,
 }
 
 // 公用
@@ -24,7 +25,7 @@ interface Common {
 }
 
 // 评论产生
-interface Author {
+export interface Author {
     name: string,
     email?: string,
     site?: string
@@ -119,10 +120,10 @@ export interface Hero extends Common {
     name?: string
 
     /** 评论文章所在 id */
-    post_id?: string,
+    post_id?: number,
 
     /** 父级 id */
-    pid?: string,
+    pid?: number,
 
     /** 内容 */
     content?: string,
@@ -138,6 +139,9 @@ export interface Hero extends Common {
     range?: String,
     country?: String,
 
+    /** 回复名*/
+    replayName?:string,
+
     /** 用户 UA */
     agent?: string,
 
@@ -146,6 +150,9 @@ export interface Hero extends Common {
 
     /** 评论状态 */
     state?: State
+    /**文章id */
+    id?:number
+    children?:Comment[]
   }
 
   // 文章

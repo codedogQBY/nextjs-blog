@@ -11,39 +11,49 @@ import Icon from '../../icon/icon'
 import { enjoins } from '../enjoin'
 import useClickOutsize from '../../../../hooks/useClickOutside'
 import message from '../../message/Message'
+import { commentModel } from '../../../../store/model'
+import { Author } from '../../../../type'
+import classnames from 'classnames'
 
-const CommentInput: FC = (props) => {
-  const [userName, setUseName] = useState('')
-  const [userEmail, setUseEmail] = useState('')
-  const [userSite, setUseSite] = useState('')
-  const [userInfo, setUserInfo] = useState<{
-    userName?: string
-    userEmail?: string
-    userSite?: string
-  }>({})
+const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_name?:string}> = ({
+  resetId,
+  post_id,
+  pid = 0,
+  pid_name
+}) => {
+  const [name, setUseName] = useState('')
+  const [email, setUseEmail] = useState('')
+  const [site, setUseSite] = useState('')
+  const [userInfo, setUserInfo] = useState<Author>({ name: '' })
   const [isSetInfoFlag, setIsSetInfoFlag] = useState(true)
   const [showEnjoin, setShowEnjoin] = useState(false)
-  const [showOption, setShowOption] = useState(false)
+  const [showOption, setShowOption] = useState(true)
   const [commentValue, setComentValue] = useState<string>('')
   const markdown = useRef<HTMLDivElement>(null)
   const enjoinRef = useRef<HTMLUListElement>(null)
   const boxRef = useRef<HTMLDivElement>(null)
 
+  useEffect(()=>{
+    if(resetId){
+      markdown.current.focus()
+    }
+  },[resetId])
+
   useEffect(() => {
     if (process.browser) {
       let useInfo = window.localStorage.getItem('userInfo')
-      console.log(useInfo);
-      
       if (useInfo) {
-        useInfo = JSON.parse(useInfo) 
+        useInfo = JSON.parse(useInfo)
         setIsSetInfoFlag(true)
         // @ts-ignore
-        setUseName(useInfo.userName)
+        setUseName(useInfo.name)
         // @ts-ignore
-        setUseEmail(useInfo.userEmail)
+        setUseEmail(useInfo.email)
         // @ts-ignore
-        setUseSite(useInfo.userSite)
-      } else {  
+        setUseSite(useInfo.site)
+        // @ts-ignore
+        setUserInfo(useInfo)
+      } else {
         setIsSetInfoFlag(false)
       }
     }
@@ -84,16 +94,9 @@ const CommentInput: FC = (props) => {
     } else if (type === 'link') {
       value += '[]()'
     } else if (type === 'code') {
-      value += `
-        <br/>\`\`\`javascript
-        <br/>
-        <br/>
-        <br/>
-        \`\`\`
-        <br/>
-        `
+      value += '```js\n\n```\n'
     }
-    markdown.current.innerHTML = value
+    markdown.current.innerText = value
     setComentValue(value)
   }
 
@@ -117,50 +120,86 @@ const CommentInput: FC = (props) => {
     const checkEmail = new RegExp(
       /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
     )
-    if (!userName) {
+    if (!name) {
       message({ type: 'error', message: '用户名不能为空' })
       return
     }
-    if (!userEmail) {
+    if (!email) {
       message({ type: 'error', message: '邮箱不能为空，邮箱不公开！' })
       return
     }
-    if (!checkEmail.test(userEmail)) {
+    if (!checkEmail.test(email)) {
       message({ type: 'error', message: '邮箱格式不正确，请检查' })
       return
     }
-    if (userSite && !ckeckUrl.test(userSite)) {
+    if (site && !ckeckUrl.test(site)) {
       message({ type: 'error', message: '网址格式不正确，请检查' })
       return
     }
-    setUserInfo({ userName, userEmail, userSite })
+    setUserInfo({ name, email, site })
     setIsSetInfoFlag(true)
     if (process.browser) {
       window.localStorage.setItem(
         'userInfo',
-        JSON.stringify({ userName, userEmail, userSite })
+        JSON.stringify({ name, email, site })
       )
     }
-  }, [userName, userEmail, userSite])
+  }, [name, email, site])
 
   // 修改用户信息
-  const handleReSetUserInfo = ()=>{
+  const handleReSetUserInfo = () => {
     setIsSetInfoFlag(false)
-    if(process.browser){
+    if (process.browser) {
       window.localStorage.removeItem('userInfo')
+    }
+  }
+  //提交
+  const handleSummit = () => {
+    const lineOverflow = commentValue.split('\n').length > 36
+    const lengthOverflow = commentValue.length > 1000
+    if (!isSetInfoFlag) {
+      message({
+        type: 'error',
+        message: '请设置用户信息'
+      })
+    } else if (!commentValue) {
+      message({
+        type: 'error',
+        message: '请输入评论内容'
+      })
+    } else if (lineOverflow || lengthOverflow) {
+      message({ type: 'error', message: '内容需要在1000字/36行以内' })
+    } else {
+      commentModel
+        .postComment({
+          post_id,
+          pid,
+          content: commentValue,
+          author: userInfo
+        })
+        .then((res) => {
+          setComentValue('')
+          markdown.current && (markdown.current.innerHTML = '')
+          commentModel.loadCommentsByPostId({ post_id })
+          resetId && resetId()
+          message({
+            type: 'success',
+            message:resetId ? '回复成功' :'留言成功'
+          })
+        })
     }
   }
   // 点击外部消失表情列表
   useClickOutsize(enjoinRef, () => {
     handleChangeEnjoin()
   })
-  // 点击外部消失朝左框
-  useClickOutsize(boxRef, () => {
-    setShowOption(false)
-  })
+  // // 点击外部消失朝左框
+  // useClickOutsize(boxRef, () => {
+  //   setShowOption(false)
+  // })
   return (
     <>
-      <div className={style['comment-input-box']}>
+      <div className={classnames(style['comment-input-box'])}>
         {!isSetInfoFlag && (
           <div className={style['user']}>
             <div className={style['user-input']}>
@@ -171,7 +210,7 @@ const CommentInput: FC = (props) => {
                   name='name'
                   placeholder='请输入您的称呼'
                   maxLength={10}
-                  value={userName}
+                  value={name}
                   autoComplete='off'
                   onChange={(e) => {
                     handleChangeUserInfo(e, 'name')
@@ -186,7 +225,7 @@ const CommentInput: FC = (props) => {
                   placeholder='请输入您的邮箱'
                   maxLength={40}
                   autoComplete='off'
-                  value={userEmail}
+                  value={email}
                   onChange={(e) => {
                     handleChangeUserInfo(e, 'email')
                   }}
@@ -200,7 +239,7 @@ const CommentInput: FC = (props) => {
                   placeholder='网站（http, https:// 开头）'
                   maxLength={40}
                   autoComplete='off'
-                  value={userSite}
+                  value={site}
                   onChange={(e) => {
                     handleChangeUserInfo(e, 'url')
                   }}
@@ -211,21 +250,21 @@ const CommentInput: FC = (props) => {
         )}
         <div className={style['content-box']} ref={boxRef}>
           <div className={style['user-form']}>
-            <div className={style['user-info']}>
+            {pid === 0  && <div className={style['user-info']}>
               <img
-                src='https://bing.ioliu.cn/v1/rand?w=50&h=50'
+                src={`https://bing.ioliu.cn/v1/rand?key=${name}&w=40&h=40`}
                 className={style['avatar']}
               />
-              {!isSetInfoFlag ? 
-                (<button
+              {!isSetInfoFlag ? (
+                <button
                   onClick={() => {
                     handleSetUserInfo()
                   }}
                 >
                   设 置
-                </button>)
-                : 
-                (<button
+                </button>
+              ) : (
+                <button
                   onClick={() => {
                     handleReSetUserInfo()
                   }}
@@ -233,13 +272,13 @@ const CommentInput: FC = (props) => {
                   修 改
                 </button>
               )}
-            </div>
+            </div>}
             <div className={style['input-area']}>
               <div
                 ref={markdown}
                 className={style['markdown-editor']}
                 contentEditable={true}
-                placeholder='请说点什么吧'
+                placeholder={pid_name ? `回复${pid_name}` :'请说点什么吧'}
                 onFocus={() => {
                   setShowOption(true)
                 }}
@@ -289,17 +328,17 @@ const CommentInput: FC = (props) => {
                     >
                       <Icon icon='icon-RectangleCopy74'></Icon>链接
                     </span>
-                    <span
+                    {/* <span
                       className={style['code']}
                       onClick={() => {
                         handleAddContent('code')
                       }}
                     >
                       <Icon icon='icon-RectangleCopy39'></Icon>代码块
-                    </span>
+                    </span> */}
                   </div>
                   <div className={style['options-enter']}>
-                    <button>评 论</button>
+                    <button onClick={handleSummit}>评 论</button>
                   </div>
                 </div>
               )}

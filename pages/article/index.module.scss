@@ -1,0 +1,55 @@
+@import '../../styles/mixin';
+.relative-article{
+    margin-top: 4rem;
+    .line-box{
+        display: flex;
+        align-items: center;
+        .line-title{
+            font-weight: 500;
+            padding-right: 1.5rem;
+            color: #d3d3d3;
+            font-size: 1.5rem;
+            width:8rem;
+        }
+    }
+    .list{
+        margin:0 0 2rem 2rem ;
+        list-style:circle;
+        .list-item{
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            .item-time{
+                font-size: 1.1rem;
+                margin-right: 1.2rem;
+            }
+            .item-descript{
+                padding-left: 1.3rem;
+                font-size: 0.95rem;
+                @include ellipsis(2)
+            }
+        }
+    }
+}
+
+.comment{
+    .comment-top{
+        display: flex;
+        align-items: center;
+        .comment-title{
+            font-weight: 500;
+            padding-right: 1.5rem;
+            color: #d3d3d3;
+            font-size: 1.5rem;
+            width:8rem;
+        }
+    }
+}
+
+.article-data{
+    .time{
+        margin-right: 2rem;
+    }
+    .likes{
+        margin-right: 2rem;
+    }
+}

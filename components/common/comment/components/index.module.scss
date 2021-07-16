@@ -1,6 +1,7 @@
 .comment-input-box {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2rem;
   .user {
     width: 100%;
     .user-input {
@@ -32,7 +33,7 @@
       .user-info {
         width: 100px;
         img {
-          width: 50px;
+          width: 40px;
           margin-right: 24px;
           border-radius: 50%;
         }

@@ -4,7 +4,7 @@ const API_ROOT = IS_DEV ? 'http://localhost:8000/api/' : 'https://api.codedogs.t
 
 const STATIC_PATH = 'https://qiniu.codedogs.top';
 
-const CDN_PATH = 'https://cdn.jkchao.cn/nuxt';
+// const CDN_PATH = 'https://cdn.jkchao.cn/nuxt';
 
 const QINIU_OPTIONS = {
   // qiniu accessKey secretKey
@@ -18,6 +18,6 @@ module.exports = {
   IS_DEV,
   API_ROOT,
   STATIC_PATH,
-  CDN_PATH,
+  // CDN_PATH,
   QINIU_OPTIONS
 };

@@ -116,7 +116,7 @@ class ArticleModel extends Model<Data> {
     state.fetch = false
   })
 
-  SET_DETAILS = this.action((state, data: Article) => {
+  SET_DETAILS = this.action((state, data: Article) => {    
     state.details = data
   })
 
@@ -183,8 +183,6 @@ class ArticleModel extends Model<Data> {
       page_size: 4
     })
     this.SET_RELATIVE_ART_LIST(list.result.list || [])
-    console.log(this.data.relativeList);
-    
   })
 
   // 喜欢文章
