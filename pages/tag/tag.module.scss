@@ -5,11 +5,14 @@
     padding: 8px 0;
     position: relative;
     .line-title{
+        min-width: 6rem;
         line-height: 32px;
-        font-size: 18px;
+        font-size: 16px;
         padding-right: 24px;
-        .icon{
-            margin-right: 16px;
-        }
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.8rem;
+          }
     }
 }

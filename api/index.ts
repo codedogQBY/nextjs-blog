@@ -140,11 +140,28 @@ export function getLink(params: any) {
 }
 
 // 增加友链
-// 增加友链
 export function postLink(data:Link) {
   return request<AjaxResponse>({
     url: `/link`,
     method: 'post',
     data
   });
+}
+
+// 获取思否推荐文章
+export function getSegmentfaultArt(params:{offset:number}){
+  return request<AjaxResponse>({
+    url: '/recommend',
+    method:'get',
+    params
+  })
+}
+
+// 获取掘金推荐文章
+export function getJuejinArt(data:{cursor:string}){
+  return request<AjaxResponse>({
+    url:'/recommend',
+    method:'post',
+    data
+  })
 }

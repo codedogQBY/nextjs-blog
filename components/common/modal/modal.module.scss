@@ -42,12 +42,13 @@
       font-weight: 1000;
     }
     .close-btn {
+      display: inline-block;
+      vertical-align: middle;
       padding: 0;
       background: transparent;
       border: none;
       outline: none;
       cursor: pointer;
-      font-size: 32px;
     }
   }
   .modal-body {
@@ -61,13 +62,13 @@
     text-align: right;
     box-sizing: border-box;
     .no-button {
-        margin-right: 16px;
-        background: #E71D36;
-        color: #FDFFFC;
+      margin-right: 16px;
+      background: #e71d36;
+      color: #fdfffc;
     }
     .ok-button {
-        background-color: #2EC4B6;
-        color: #FDFFFC;
+      background-color: #2ec4b6;
+      color: #fdfffc;
     }
   }
 }

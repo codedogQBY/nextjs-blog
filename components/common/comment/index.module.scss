@@ -83,10 +83,20 @@
         .like {
           cursor: pointer;
           flex: 1;
+          .icon{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
         }
         .replay {
           cursor: pointer;
           flex: 2;
+          .icon{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
         }
       }
     }
@@ -175,10 +185,20 @@
         .children-like {
           cursor: pointer;
           flex: 1;
+          .icon{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
         }
         .children-replay {
           cursor: pointer;
           flex: 2;
+          .icon{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
         }
       }
     }

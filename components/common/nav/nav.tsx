@@ -25,7 +25,7 @@ const Nav = () => {
     { name: '推荐', url: '/recommend' },
     { name: '友链', url: '/friend' },
     { name: '留言', url: '/wall' },
-    { name: '关于我', url: '/about' },
+    // { name: '关于我', url: '/about' },
   ]
   const navItemClass = classnames(
     style['nav-item'],

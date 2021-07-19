@@ -1,15 +1,18 @@
-.line-box{
-    display: flex;
-    align-items: center;
-    height: 32px;
-    padding: 8px 0;
-    position: relative;
-    .line-title{
-        line-height: 32px;
-        font-size: 18px;
-        padding-right: 24px;
-        .icon{
-            margin-right: 16px;
-        }
+.line-box {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 8px 0;
+  position: relative;
+  .line-title {
+    min-width: 6rem;
+    line-height: 32px;
+    font-size: 16px;
+    padding-right: 24px;
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5rem;
     }
+  }
 }

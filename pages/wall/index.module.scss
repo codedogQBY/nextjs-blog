@@ -1,0 +1,120 @@
+@import '../../styles/variables';
+.walls {
+  .head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    width: 12rem;
+    height: 5rem;
+    font-size: 1.3rem;
+    color: #d3d3d3;
+    text-align: center;
+    border-top: 1px solid #696969;
+    border-bottom: 1px solid #696969;
+    .box {
+      user-select: none;
+      cursor: pointer;
+      .join {
+        position: relative;
+        padding: 0.5rem 1rem;
+        color: #d3d3d3;
+        border-radius: 0.3rem;
+        transition: all 0.5s ease;
+        animation: defaultBtnBg 10s ease infinite alternate;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+  .list-box {
+    margin-top: 3rem;
+    >div {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      h3{
+        margin: 0;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% / 3 - 2rem / 3);
+      }
+      .list {
+        position: relative;
+        left: 0;
+        top: 0;
+        padding: $normal-pad;
+        min-height: 13rem;
+        margin-bottom: 1rem;
+        background: $code-bg;
+        transition: all 0.3s;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.2);
+          transform: translate(-4px, -4px);
+        }
+        > .user {
+          > .user-name {
+            max-width: 20rem;
+            font-weight: normal;
+            font-size: 1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+        > .content {
+          margin: 1rem 0;
+          min-height: 6rem;
+          max-height: 20rem;
+          font-size: 0.85rem;
+          word-break: break-all;
+          overflow: hidden;
+          img{
+            width: 100%;
+          }
+          a{
+            text-decoration: underline;
+          }
+        }
+        > .info {
+          height: 1rem;
+          font-size: $font-size-small;
+          line-height: 1rem;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+@keyframes defaultBtnBg {
+  0% {
+    color: white;
+    background: #5dffe7;
+  }
+  20% {
+    color: white;
+    background: #6fffe9;
+  }
+  40% {
+    color: white;
+    background: #5bc0be;
+  }
+  60% {
+    color: white;
+    background: #3a506b;
+  }
+  80% {
+    color: white;
+    background: #1c2541;
+  }
+  100% {
+    color: white;
+    background: #0b132b;
+  }
+}

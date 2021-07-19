@@ -32,7 +32,7 @@ marked.setOptions({
   tables: true,
   breaks: true,
   pedantic: false,
-  sanitize: false,
+  insane: false,
   smartLists: true,
   smartypants: false,
   highlight(code, lang) {
@@ -118,7 +118,7 @@ renderer.link = linkParse;
 renderer.paragraph = paragraphParse;
 renderer.image = imageParse;
 
-export default (content, tags, parseHtml = false) => {
+ const returnContent = (content, tags, parseHtml = false) => {
   if (typeof content !== 'string') {
     return '';
   }
@@ -137,7 +137,7 @@ export default (content, tags, parseHtml = false) => {
     return `<h${level} id="header-${toc.length - 1}">${text}</h${level}>\n`;
   };
 
-  marked.setOptions({ sanitize: !parseHtml });
+  marked.setOptions({ insane: !parseHtml });
 
   renderer.heading = headingParse;
 
@@ -148,3 +148,5 @@ export default (content, tags, parseHtml = false) => {
   // 返回解析内容
   return { html, toc };
 };
+
+export default returnContent

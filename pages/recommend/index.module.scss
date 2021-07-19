@@ -1,0 +1,227 @@
+.tabs {
+  display: flex;
+  margin-bottom: 2rem;
+
+  .tab {
+    background: #191c1f;
+    text-align: center;
+    flex: 1;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    img {
+      width: 1.2rem;
+      margin-right: 1rem;
+      vertical-align: middle;
+    }
+  }
+  .sf-tab {
+    margin-right: 1rem;
+    color: #00965e;
+  }
+  .jj-tab {
+    margin-left: 1rem;
+    color: #007fff;
+  }
+}
+.tabPane {
+  .list {
+    .list-item {
+      background: #191c1f;
+      border-radius: 5px;
+      position: relative;
+      display: block;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.0625);
+      margin-bottom: 1.5rem;
+      .content {
+        h5 {
+          margin-top: 0;
+          font-size: 1.25rem;
+          font-weight: 500;
+          .title {
+            display: inline-block;
+          }
+        }
+        .info-wrap {
+          display: flex;
+          align-items: center;
+          padding-top: 0.25rem;
+          color: #86919b !important;
+          .avatar {
+            width: 2rem;
+            height: 2rem;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            border-radius: 50%;
+            vertical-align: middle;
+            border-style: none;
+          }
+          .name {
+            font-weight: 700;
+            line-height: 0.875rem;
+            margin-left: 0.75rem !important;
+            margin-right: 0.5rem !important;
+            color: #00965e !important;
+          }
+          .split-dot {
+            line-height: 0.875rem;
+            font-size: 0.875rem;
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+            &::before {
+              content: '\2022';
+              color: #ced4da;
+            }
+          }
+          .creat-time {
+            display: flex;
+            line-height: 0.875rem;
+            font-size: 1rem;
+            align-items: center;
+            margin-left: 0.75rem !important;
+          }
+        }
+      }
+    }
+  }
+  .juejin-list {
+    width: 100%;
+    .list-item {
+      margin-bottom: 1.5rem;
+      .entry {
+        .entry-link {
+          .content-box {
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            background: #191c1f;
+            padding: 0.75rem 1.25rem;
+            padding-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .meta-container {
+              display: flex;
+              align-items: center;
+              color: #86909c;
+              .user-message {
+                display: flex;
+                align-items: center;
+                margin-right: 0.5rem;
+                .user-name {
+                  max-width: 10rem;
+                  font-size: 0.85rem;
+                  line-height: 1.25rem;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  word-break: break-all;
+                  color: #007fff;
+                }
+              }
+              .date {
+                margin: 0 0.5rem;
+                line-height: 1.25rem;
+                font-size: 0.85rem;
+                flex-shrink: 0;
+              }
+              .tag-list {
+                display: flex;
+                align-items: center;
+                .tag {
+                  display: flex;
+                  flex-shrink: 0;
+                  font-size: 0.85rem;
+                  line-height: 1.25rem;
+                  align-items: center;
+                  .split-dot{
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
+                    &::before {
+                      content: '\2022';
+                      color: #ced4da;
+                    }
+                  }
+                }
+              }
+            }
+            .content-wrapper {
+              display: flex;
+              padding-bottom: 0.75rem;
+              // border-bottom: 1px solid #e5e6eb;
+              margin-top: 0.625rem;
+              width: 100%;
+              .content-main {
+                flex: 1 1 auto;
+                .title-row {
+                  display: flex;
+                  margin-bottom: 0.5rem;
+                  font-weight: bold;
+                  font-size: 1.25rem;
+                  line-height: 1.5rem;
+                  color: #1d2129;
+                  word-break: break-all;
+                  width: 100%;
+                  display: -webkit-box;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 1;
+                }
+                .abstract {
+                  margin-top: 1rem;
+                  margin-bottom: 1rem;
+                  a {
+                    color: #86909c;
+                    font-size: 0.85rem;
+                    line-height: 1.25rem;
+                    word-break: break-all;
+                    display: -webkit-box;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                  }
+                }
+                .action-list {
+                  display: flex;
+                  align-items: center;
+                  .item {
+                    position: relative;
+                    align-items: center;
+                    display: flex;
+                    margin-right: 1.25rem;
+                    font-size: 0.85rem;
+                    line-height: 1.25rem;
+                    color: #4e5969;
+                    flex-shrink: 0;
+                  }
+                  .view {
+                    margin-left: 0.25rem;
+                  }
+                  .like {
+                    margin-left: 0.25rem;
+                  }
+                  .comment {
+                    margin-left: 0.25rem;
+                  }
+                }
+              }
+              .thumb {
+                flex: 0 0 auto;
+                width: 120px;
+                height: 80px;
+                margin-left: 24px;
+                background-color: #fff;
+                border-radius: 2px;
+                position: relative;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

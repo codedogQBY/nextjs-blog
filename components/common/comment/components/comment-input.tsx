@@ -7,13 +7,13 @@ import React, {
   useEffect
 } from 'react'
 import style from './index.module.scss'
-import Icon from '../../icon/icon'
 import { enjoins } from '../enjoin'
 import useClickOutsize from '../../../../hooks/useClickOutside'
 import message from '../../message/Message'
 import { commentModel } from '../../../../store/model'
 import { Author } from '../../../../type'
 import classnames from 'classnames'
+import {GrinningFace,Pic,Link,Code} from '@icon-park/react'
 
 const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_name?:string}> = ({
   resetId,
@@ -291,7 +291,7 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
                   <div className={style['options-tool']}>
                     <div className={style['enjoin']}>
                       <span onClick={handleChangeEnjoin}>
-                        <Icon icon='icon-RectangleCopy4'></Icon>表情
+                        <GrinningFace className={style['icon']} theme="outline" size="18" />表情
                       </span>
                       <div className={style['enjoin-box']}>
                         {showEnjoin && (
@@ -318,7 +318,7 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
                         handleAddContent('img')
                       }}
                     >
-                      <Icon icon='icon-RectangleCopy253'></Icon> 图片
+                      <Pic className={style['icon']} size="18"/> 图片
                     </span>
                     <span
                       className={style['link']}
@@ -326,7 +326,7 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
                         handleAddContent('link')
                       }}
                     >
-                      <Icon icon='icon-RectangleCopy74'></Icon>链接
+                      <Link className={style['icon']} size="18"/>链接
                     </span>
                     {/* <span
                       className={style['code']}
@@ -334,7 +334,7 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
                         handleAddContent('code')
                       }}
                     >
-                      <Icon icon='icon-RectangleCopy39'></Icon>代码块
+                      <Code size='18' className{style['icon']}/>代码块
                     </span> */}
                   </div>
                   <div className={style['options-enter']}>

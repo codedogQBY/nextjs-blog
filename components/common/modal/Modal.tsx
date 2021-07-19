@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useState, useEffect } from 'react'
 import style from './modal.module.scss'
-import Icon from '../icon/icon'
 import { createPortal } from 'react-dom'
+import {Close} from '@icon-park/react'
 interface IModal {
   title: string
   visible: boolean
@@ -50,10 +50,10 @@ const Modal: FC<IModal> = (props) => {
       <div style={{ width: width ?? '30%' }} className={style['modal']}>
         <div className={style['modal-hearder']}>
           <h4 className={style['title']}>{title}</h4>
-          <Icon
+          <Close
             onClick={handleClose}
-            classname={style['close-btn']}
-            icon='icon-RectangleCopy22'
+            className={style['close-btn']}
+            size="18"
           />
         </div>
         <div className={style['modal-body']}>{children}</div>

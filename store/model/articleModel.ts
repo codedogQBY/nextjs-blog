@@ -1,6 +1,6 @@
 import { Model } from '@redux-model/react'
 import { getArt, getArts, likeArt } from '../../api'
-import { Pagination, Article, AjaxResponse, State } from '../../type'
+import { Pagination, Article, State } from '../../type'
 
 interface Data {
   hotArt: {

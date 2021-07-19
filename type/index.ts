@@ -59,6 +59,18 @@ export interface User {
     count?: number
 }
 
+// 日记
+export interface Diary extends Common {
+  _id:string;
+  /**内容 */
+  content: string;
+  /**发布日期 */
+  create_at: Date;
+  /**天气 */
+  weather: string;
+  /**点赞 */
+  likes: number;
+}
 
 // 英雄版（留言墙）
 export interface Hero extends Common {

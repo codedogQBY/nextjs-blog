@@ -1,7 +1,6 @@
 import style from './/header.module.scss'
 import Nav from '../../common/nav/nav'
 import Line from '../../common/line/line'
-import Icon from '../../common/icon/icon'
 import {
   useState,
   useEffect,
@@ -11,6 +10,7 @@ import {
   KeyboardEvent
 } from 'react'
 import router from '_next@10.2.3@next/router'
+import {Search} from '@icon-park/react'
 const Header = () => {
   const [translateY, setTranslateY] = useState('translateY(0)')
   const [top, setTop] = useState(0)
@@ -60,7 +60,7 @@ const Header = () => {
         </div>
         <div className={style['header-right']}>
           <div className={style['search-box']}>
-            <Icon icon='icon-RectangleCopy2' onClick={handleSearchOpen} />
+            <Search size="18"  onClick={handleSearchOpen} />
             <input
               value={keyword}
               ref={inputRef}

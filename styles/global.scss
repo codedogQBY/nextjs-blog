@@ -8,6 +8,7 @@ body {
   background: rgb(40, 44, 50);
   color: #ebebeb;
   @include scrollBar($width: 5px);
+  position: relative;
 }
 header {
   width: 100%;
@@ -82,8 +83,8 @@ label.require{
   }
 }
 
-// 友链表单
-.friend-form{
+// 弹框表单
+.friend-form,.hero-form{
   .form-item{
     display: flex;
   }

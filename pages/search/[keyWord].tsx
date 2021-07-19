@@ -6,7 +6,7 @@ import { getArts } from '../../api'
 import { useRouter } from 'next/router'
 import Line from '../../components/common/line/line'
 import style from './search.module.scss'
-import Icon from '../../components/common/icon/icon'
+import {Search as SearchIcon} from '@icon-park/react'
 const Search = () => {
   const router = useRouter()
   const { keyWord } = router.query
@@ -45,7 +45,7 @@ const Search = () => {
     <>
       <p className={style['line-box']}>
         <span className={style['line-title']}>
-          <Icon icon='icon-RectangleCopy2' classname={style['icon']} />
+          <SearchIcon size="18"  className={style['icon']} />
           {keyWord}
         </span>
         <Line

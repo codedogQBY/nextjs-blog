@@ -8,7 +8,7 @@ import Line from '../../components/common/line/line'
 import style from './tag.module.scss'
 import { Tag } from '../../type'
 import { tagModel } from '../../store/model'
-import Icon from '../../components/common/icon/icon'
+import { TagOne } from '@icon-park/react'
 
 const Code = () => {
   const router = useRouter()
@@ -54,7 +54,7 @@ const Code = () => {
     <>
       <p className={style['line-box']}>
         <span className={style['line-title']}>
-          <Icon icon='icon-RectangleCopy196' classname={style['icon']} />
+          <TagOne size='18' className={style['icon']} />
           {tag?.name}
         </span>
         <Line
