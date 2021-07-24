@@ -141,8 +141,6 @@ renderer.image = imageParse;
 
   renderer.heading = headingParse;
 
-  // if (!parseHtml) renderer.image = commentImageParse;
-
   let html = marked(content, { renderer });
 
   // 返回解析内容

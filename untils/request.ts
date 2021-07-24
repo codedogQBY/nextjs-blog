@@ -4,7 +4,7 @@ import * as config from '../config.js';
 
 const service: AxiosInstance = axios.create({
   baseURL: config.API_ROOT, // url = base url + request url
-  timeout: 5000 // request timeout
+  timeout: 10000 // request timeout
 });
 
 // request interceptor

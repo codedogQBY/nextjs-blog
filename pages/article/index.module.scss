@@ -1,55 +1,160 @@
 @import '../../styles/mixin';
-.relative-article{
-    margin-top: 4rem;
-    .line-box{
-        display: flex;
-        align-items: center;
-        .line-title{
-            font-weight: 500;
-            padding-right: 1.5rem;
-            color: #d3d3d3;
-            font-size: 1.5rem;
-            width:8rem;
-        }
+.relative-article {
+  margin-top: 4rem;
+  .line-box {
+    display: flex;
+    align-items: center;
+    .line-title {
+      font-weight: 500;
+      padding-right: 1.5rem;
+      color: #d3d3d3;
+      font-size: 1.5rem;
+      width: 8rem;
     }
-    .list{
-        margin:0 0 2rem 2rem ;
-        list-style:circle;
-        .list-item{
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            .item-time{
-                font-size: 1.1rem;
-                margin-right: 1.2rem;
-            }
-            .item-descript{
-                padding-left: 1.3rem;
-                font-size: 0.95rem;
-                @include ellipsis(2)
-            }
-        }
+  }
+  .list {
+    margin: 0 0 2rem 2rem;
+    list-style: circle;
+    .list-item {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      .item-time {
+        font-size: 1.1rem;
+        margin-right: 1.2rem;
+      }
+      .item-descript {
+        padding-left: 1.3rem;
+        font-size: 0.95rem;
+        @include ellipsis(2);
+      }
     }
+  }
 }
 
-.comment{
-    .comment-top{
-        display: flex;
-        align-items: center;
-        .comment-title{
-            font-weight: 500;
-            padding-right: 1.5rem;
-            color: #d3d3d3;
-            font-size: 1.5rem;
-            width:8rem;
-        }
-    }
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  .tag {
+    margin: 0 0.5rem;
+  }
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
 }
 
-.article-data{
-    .time{
-        margin-right: 2rem;
+.comment {
+  .comment-top {
+    display: flex;
+    align-items: center;
+    .comment-title {
+      font-weight: 500;
+      padding-right: 1.5rem;
+      color: #d3d3d3;
+      font-size: 1.5rem;
+      width: 8rem;
     }
-    .likes{
-        margin-right: 2rem;
+  }
+}
+
+.article-data {
+  .time {
+    margin-right: 2rem;
+  }
+  .likes {
+    margin-right: 2rem;
+  }
+}
+
+.option {
+  position: fixed;
+  top: 12rem;
+  right: 8rem;
+  width: 3rem;
+  .like {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background: #191c1f;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    .icon {
+      display: inline-block;
+      vertical-align: center;
+      transition: all 0.3s;
     }
+    &:hover {
+      .icon {
+        transform: translateY(-0.3rem);
+      }
+    }
+  }
+  .comments {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    background: #191c1f;
+    height: 3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    .icon {
+      display: inline-block;
+      vertical-align: center;
+      transition: all 0.3s;
+    }
+    &:hover {
+      .icon {
+        transform: translateY(-0.3rem);
+      }
+    }
+  }
+  .number {
+    position: absolute;
+    top: 0;
+    left: -0.8rem;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    width: 1.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    background: #53565a;
+  }
+}
+
+// 移动
+@media (max-width: 700px) {
+  .option {
+    right: 1rem;
+    .like {
+      background: rgba(#191c1f, 0.5);
+    }
+    .comments {
+      background: rgba(#191c1f, 0.5);
+    }
+  }
+  .relative-article {
+    .line-box {
+      .line-title {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .comment {
+    .comment-top {
+      .comment-title {
+        font-size: 1.3rem;
+      }
+    }
+  }
 }

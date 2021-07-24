@@ -1,6 +1,5 @@
 import style from './/header.module.scss'
 import Nav from '../../common/nav/nav'
-import Line from '../../common/line/line'
 import {
   useState,
   useEffect,
@@ -11,12 +10,22 @@ import {
 } from 'react'
 import router from '_next@10.2.3@next/router'
 import {Search} from '@icon-park/react'
+import { useViewport } from '../../../hooks/viewportContext'
+
 const Header = () => {
+  const {width} = useViewport()
   const [translateY, setTranslateY] = useState('translateY(0)')
   const [top, setTop] = useState(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [keyword, setKeyword] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [translateY, top])
+
   const handleScroll = (event) => {
     // 滚动的高度
     const p =
@@ -31,18 +40,14 @@ const Header = () => {
     }
     setTop(p)
   }
+
   const handleSearchOpen = useCallback(() => {
     if (!searchOpen) {
       inputRef.current.focus()
     }
     setSearchOpen(!searchOpen)
   }, [searchOpen])
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [translateY, top])
+
   const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) {
       router.push(`/search/${keyword}`)
@@ -60,12 +65,12 @@ const Header = () => {
         </div>
         <div className={style['header-right']}>
           <div className={style['search-box']}>
-            <Search size="18"  onClick={handleSearchOpen} />
+            <Search size="18" className={style['icon']}  onClick={handleSearchOpen} />
             <input
               value={keyword}
               ref={inputRef}
               placeholder='Search'
-              style={searchOpen ? { opacity: '1', width: '200px' } : {}}
+              style={ width > 700 && searchOpen ? { opacity: '1', width: '200px' } : {}}
               className='search-input'
               onBlur={handleSearchOpen}
               onKeyDown={(e) => {
@@ -78,7 +83,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Line width='100%' height={1} scale={0.5} color='#282c35' />
     </header>
   )
 }

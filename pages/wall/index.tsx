@@ -9,8 +9,11 @@ import { Hero } from '../../type'
 import classNames from '_classnames@2.3.1@classnames'
 import moment from '_moment@2.29.1@moment'
 import marked from '../../untils/marked'
+import Head from 'next/head'
+import { useViewport } from '../../hooks/viewportContext'
 
 const Wall = () => {
+  const { width } = useViewport()
   const [hasMore, setHasMore] = useState(true)
   const [data, setData] = useState([])
   const [page, setPage] = useState(1)
@@ -99,6 +102,9 @@ const Wall = () => {
   }
   return (
     <>
+      <Head>
+        <title>留言 | codedogs</title>
+      </Head>
       <div className={style['walls']}>
         <div className={style['head']}>
           <div className={style['box']}>
@@ -119,108 +125,152 @@ const Wall = () => {
             loadMore={getMoreData}
             hasMore={!loading && hasMore}
           >
-            <div className={style['column']} key='1'>
-              {data.map((item, index) => {
-                if (index % 3 === 0) {
-                  return (
-                    <div key={item._id} className={style['list']}>
-                      <h3 className={style['user']}>
-                        <span className={style['user-name']}>
-                          {moment(item.create_time).format('yyyy.MM.DD HH:mm')}
-                        </span>
-                      </h3>
-                      <div
-                        className={classNames(
-                          style['content'],
-                          style['markdown-content']
-                        )}
-                        dangerouslySetInnerHTML={{
-                          __html: (
-                            marked(item.content, null, false) as {
-                              html: string
-                              toc: any[]
-                            }
-                          ).html
-                        }}
-                      ></div>
-                      <div className={style['info']}>
-                        <span className={style['time']}>{item.name}</span>
+            {width > 700 ? (
+              <>
+                <div className={style['column']} key='1'>
+                  {data.map((item, index) => {
+                    if (index % 3 === 0) {
+                      return (
+                        <div key={item._id} className={style['list']}>
+                          <h3 className={style['user']}>
+                            <span className={style['user-name']}>
+                              {moment(item.create_time).format(
+                                'yyyy.MM.DD HH:mm'
+                              )}
+                            </span>
+                          </h3>
+                          <div
+                            className={classNames(
+                              style['content'],
+                              style['markdown-content']
+                            )}
+                            dangerouslySetInnerHTML={{
+                              __html: (
+                                marked(item.content, null, false) as {
+                                  html: string
+                                  toc: any[]
+                                }
+                              ).html
+                            }}
+                          ></div>
+                          <div className={style['info']}>
+                            <span className={style['time']}>{item.name}</span>
+                          </div>
+                        </div>
+                      )
+                    }
+                  })}
+                </div>
+                <div className={style['column']} key='2'>
+                  {data.map((item, index) => {
+                    if (index % 3 === 1) {
+                      return (
+                        <div key={item._id} className={style['list']}>
+                          <h3 className={style['user']}>
+                            <span className={style['user-name']}>
+                              {moment(item.create_time).format(
+                                'yyyy.MM.DD HH:mm'
+                              )}
+                            </span>
+                          </h3>
+                          <div
+                            className={classNames(
+                              style['content'],
+                              style['markdown-content']
+                            )}
+                            dangerouslySetInnerHTML={{
+                              __html: (
+                                marked(item.content, null, false) as {
+                                  html: string
+                                  toc: any[]
+                                }
+                              ).html
+                            }}
+                          ></div>
+                          <div className={style['info']}>
+                            <span className={style['time']}>{item.name}</span>
+                          </div>
+                        </div>
+                      )
+                    }
+                  })}
+                </div>
+                <div className={style['column']} key='3'>
+                  {data.map((item, index) => {
+                    if (index % 3 === 2) {
+                      return (
+                        <div key={item._id} className={style['list']}>
+                          <h3 className={style['user']}>
+                            <span className={style['user-name']}>
+                              {moment(item.create_time).format(
+                                'yyyy.MM.DD HH:mm'
+                              )}
+                            </span>
+                          </h3>
+                          <div
+                            className={classNames(
+                              style['content'],
+                              style['markdown-content']
+                            )}
+                            dangerouslySetInnerHTML={{
+                              __html: (
+                                marked(item.content, null, false) as {
+                                  html: string
+                                  toc: any[]
+                                }
+                              ).html
+                            }}
+                          ></div>
+                          <div className={style['info']}>
+                            <span className={style['time']}>{item.name}</span>
+                          </div>
+                        </div>
+                      )
+                    }
+                  })}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={style['column']}>
+                  {data.map((item, index) => {
+                    return (
+                      <div key={item._id} className={style['list']}>
+                        <h3 className={style['user']}>
+                          <span className={style['user-name']}>
+                            {moment(item.create_time).format(
+                              'yyyy.MM.DD HH:mm'
+                            )}
+                          </span>
+                        </h3>
+                        <div
+                          className={classNames(
+                            style['content'],
+                            style['markdown-content']
+                          )}
+                          dangerouslySetInnerHTML={{
+                            __html: (
+                              marked(item.content, null, false) as {
+                                html: string
+                                toc: any[]
+                              }
+                            ).html
+                          }}
+                        ></div>
+                        <div className={style['info']}>
+                          <span className={style['time']}>{item.name}</span>
+                        </div>
                       </div>
-                    </div>
-                  )
-                }
-              })}
-            </div>
-            <div className={style['column']} key='2'>
-              {data.map((item, index) => {
-                if (index % 3 === 1) {
-                  return (
-                    <div key={item._id} className={style['list']}>
-                      <h3 className={style['user']}>
-                        <span className={style['user-name']}>
-                          {moment(item.create_time).format('yyyy.MM.DD HH:mm')}
-                        </span>
-                      </h3>
-                      <div
-                        className={classNames(
-                          style['content'],
-                          style['markdown-content']
-                        )}
-                        dangerouslySetInnerHTML={{
-                          __html: (
-                            marked(item.content, null, false) as {
-                              html: string
-                              toc: any[]
-                            }
-                          ).html
-                        }}
-                      ></div>
-                      <div className={style['info']}>
-                        <span className={style['time']}>{item.name}</span>
-                      </div>
-                    </div>
-                  )
-                }
-              })}
-            </div>
-            <div className={style['column']} key='3'>
-              {data.map((item, index) => {
-                if (index % 3 === 2) {
-                  return (
-                    <div key={item._id} className={style['list']}>
-                      <h3 className={style['user']}>
-                        <span className={style['user-name']}>
-                          {moment(item.create_time).format('yyyy.MM.DD HH:mm')}
-                        </span>
-                      </h3>
-                      <div
-                        className={classNames(
-                          style['content'],
-                          style['markdown-content']
-                        )}
-                        dangerouslySetInnerHTML={{
-                          __html: (
-                            marked(item.content, null, false) as {
-                              html: string
-                              toc: any[]
-                            }
-                          ).html
-                        }}
-                      ></div>
-                      <div className={style['info']}>
-                        <span className={style['time']}>{item.name}</span>
-                      </div>
-                    </div>
-                  )
-                }
-              })}
-            </div>
+                    )
+                  })}
+                </div>
+              </>
+            )}
             {loading && hasMore && <Loading />}
           </InfiniteScroll>
         </div>
       </div>
       <Modal
-        width='50%'
         setNewVisible={setNewVisible}
         title='我要上墙'
         visible={visible}

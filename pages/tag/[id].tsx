@@ -9,6 +9,7 @@ import style from './tag.module.scss'
 import { Tag } from '../../type'
 import { tagModel } from '../../store/model'
 import { TagOne } from '@icon-park/react'
+import Head from 'next/head'
 
 const Code = () => {
   const router = useRouter()
@@ -52,6 +53,9 @@ const Code = () => {
   }
   return (
     <>
+      <Head>
+        <title>标签[{" "+tag?.name+" "}]| codedogs</title>
+      </Head>
       <p className={style['line-box']}>
         <span className={style['line-title']}>
           <TagOne size='18' className={style['icon']} />

@@ -47,7 +47,7 @@ const Modal: FC<IModal> = (props) => {
       className={style['modal-wrapper']}
     >
       <div className={style['modal-mask']} onClick={handleClose}></div>
-      <div style={{ width: width ?? '30%' }} className={style['modal']}>
+      <div className={style['modal']}>
         <div className={style['modal-hearder']}>
           <h4 className={style['title']}>{title}</h4>
           <Close

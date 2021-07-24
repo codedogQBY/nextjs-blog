@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import ArticleListItem from '../../components/common/article/article-list-item'
 import Loading from '../../components/common/loading/loading'
 import { getArts } from '../../api'
+import Head from 'next/head'
 
 const Code = () => {
   const [hasMore, setHasMore] = useState(true)
@@ -15,7 +16,7 @@ const Code = () => {
       type: 1,
       current_page: 1,
       page_size: 5
-    }).then(res=>{
+    }).then((res) => {
       setData(res.result.list)
     })
   }, [])
@@ -26,12 +27,12 @@ const Code = () => {
       type: 1,
       current_page: newPage,
       page_size: 5
-    }).then(res=>{
-      const {current_page,total_page} = res.result.pagination 
+    }).then((res) => {
+      const { current_page, total_page } = res.result.pagination
       setPage(current_page)
       setData(data.concat(res.result.list))
       setLoading(false)
-      if(newPage >= total_page){
+      if (newPage >= total_page) {
         setLoading(false)
         setHasMore(false)
       }
@@ -39,6 +40,9 @@ const Code = () => {
   }
   return (
     <>
+      <Head>
+        <title>技术 | codedogs</title>
+      </Head>
       <InfiniteScroll
         initialLoad={false}
         pageStart={1}

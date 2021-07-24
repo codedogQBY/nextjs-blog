@@ -9,7 +9,7 @@
       justify-content: space-between;
       .name,
       .email {
-        margin-right: 24px;
+        margin-right: 1.5rem;
       }
       .name,
       .email,
@@ -17,7 +17,7 @@
         display: flex;
         flex: 1;
         label {
-          width: 60px;
+          width: 3.75rem;
         }
         input {
           flex: 1;
@@ -31,15 +31,18 @@
       display: flex;
       align-items: flex-start;
       .user-info {
-        width: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-right: 1.5rem;
+        width: 6.25rem;
         img {
-          width: 40px;
-          margin-right: 24px;
+          width: 2.5rem;
           border-radius: 50%;
         }
         button {
-          margin-top: 16px;
-          padding: 8px 16px;
+          margin-top: 1rem;
+          padding: 0.5rem 1rem;
           cursor: pointer;
           background-color: #14213d;
           color: lightgray;
@@ -58,17 +61,17 @@
           width: 100%; /*自动适应父布局宽度*/
           border: 1px solid #696969;
           border-radius: 4px;
-          min-height: 48px;
-          margin-bottom: 16px;
-          padding: 4px 8px;
-          font-size: 14px;
+          min-height: 3rem;
+          margin-bottom: 1rem;
+          padding: 0.25rem 0.5rem;
+          font-size: 0.875rem;
           &:empty {
             &::before {
               content: '请说点什么吧（必填）';
-              font-size: 14px;
+              font-size: 0.875rem;
               color: #696969;
-              line-height: 21px;
-              padding-top: 10px;
+              line-height: 1.3rem;
+              padding-top: 0.625rem;
             }
           }
         }
@@ -84,11 +87,11 @@
             .link,
             .code {
               cursor: pointer;
-              margin-right: 32px;
+              margin-right: 2rem;
               i {
-                margin-right: 4px;
+                margin-right: 0.25rem;
               }
-              .icon{
+              .icon {
                 display: inline-block;
                 vertical-align: middle;
                 margin-right: 0.5rem;
@@ -105,19 +108,19 @@
                   grid-template-columns: repeat(8, 12.5%);
                   background: rgba(#3c4244, 0.5);
                   border-radius: 4px;
-                  padding: 4px;
+                  padding: 0.25rem;
                   li {
                     margin: 2px;
-                    font-size: 18px;
+                    font-size: 1.125rem;
                   }
                 }
               }
             }
           }
           .options-enter {
-            width: 100px;
+            width: 6.25rem;
             button {
-              padding: 8px 24px;
+              padding: 0.5rem 1.5rem;
               cursor: pointer;
               background-color: #14213d;
               color: lightgray;
@@ -131,5 +134,42 @@
         }
       }
     }
+  }
+  input,
+  textarea {
+    padding: 0.5rem 0;
+    padding-left: 0.625rem;
+    color: #fff;
+    border: 1px solid #696969;
+    background: transparent;
+    outline: none;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    &:focus {
+      border: 1px solid #fff;
+    }
+  }
+  label {
+    width: 4rem;
+    color: #fff;
+    &::before {
+      content: '';
+      margin-right: 0.625rem;
+    }
+  }
+  label.require {
+    position: relative;
+    &::before {
+      content: '*';
+      color: #e71d36;
+      margin-right: 0.25rem;
+    }
+  }
+  .form-item {
+    display: flex;
+  }
+  input,
+  textarea {
+    width: calc(100% - 0.625rem);
   }
 }

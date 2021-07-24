@@ -1,5 +1,5 @@
-$d-max: 50px;
-$d-min: 12px;
+$d-max: 3.1rem;
+$d-min: 0.75rem;
 .stage {
   display: flex;
   justify-content: center;
@@ -11,8 +11,8 @@ $d-min: 12px;
 }
 .dot-floating {
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 0.7rem;
+  height: 0.7rem;
   border-radius: 5px;
   background-color: #c7dcdf;
   color: #c7dcdf;
@@ -26,9 +26,9 @@ $d-min: 12px;
     top: 0;
   }
   &::before {
-    left: -12px;
-    width: 10px;
-    height: 10px;
+    left: -0.75rem;
+    width: 0.7rem;
+    height: 0.7rem;
     border-radius: 5px;
     background-color: #c7dcdf;
     color: #c7dcdf;
@@ -36,9 +36,9 @@ $d-min: 12px;
     animation: dot-floating-before 3s infinite ease-in-out;
   }
   &::after {
-    left: -24px;
-    width: 10px;
-    height: 10px;
+    left: -1.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
     border-radius: 5px;
     background-color: #c7dcdf;
     color: #c7dcdf;
@@ -49,13 +49,13 @@ $d-min: 12px;
 
 @keyframes dot-floating {
   0% {
-    left: calc(-50% - 5px);
+    left: calc(-50% - 0.28rem);
   }
   75% {
-    left: calc(50% + 105px);
+    left: calc(50% + 6.5rem);
   }
   100% {
-    left: calc(50% + 105px);
+    left: calc(50% + 6.5rem);
   }
 }
 

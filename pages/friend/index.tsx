@@ -4,6 +4,7 @@ import { linkModel } from '../../store/model'
 import Modal from '../../components/common/modal'
 import message from '../../components/common/message/Message'
 import {Link} from '../../type'
+import Head from 'next/head'
 const Friend = memo(() => {
   const [visible, setVisible] = useState(false)
   const [formData, setFormData] = useState<Link>({
@@ -88,10 +89,13 @@ const Friend = memo(() => {
   }
   return (
     <div className={style['friends-box']}>
+      <Head>
+        <title>朋友 | codedogs</title>
+      </Head>
       <button className={style['add-link']} onClick={handleClick}>
         申请友链
       </button>
-      <h1 className={style['title']}>My friends</h1>
+      <h2 className={style['title']}>My friends</h2>
       <div className={style['links']}>
         <ul>
           {list.map((item) => {
@@ -108,7 +112,6 @@ const Friend = memo(() => {
         </ul>
       </div>
       <Modal
-        width='50%'
         setNewVisible={setNewVisible}
         title='申请友链'
         visible={visible}

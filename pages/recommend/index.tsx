@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import moment from '_moment@2.29.1@moment'
 import Loading from '../../components/common/loading/loading'
 import { recommendModel } from '../../store/model'
 import style from './index.module.scss'
 import classNames from '_classnames@2.3.1@classnames'
+import { Comments, ThumbsUp, PreviewOpen } from '@icon-park/react'
+import Head from 'next/head'
+import { useViewport } from '../../hooks/viewportContext'
 
 const dateStr = (date: number) => {
   //获取js 时间戳
@@ -36,6 +38,7 @@ const dateStr = (date: number) => {
 }
 
 const Recommend = () => {
+  const {width} = useViewport()
   const segmentfaultList = recommendModel.useData(
     (data) => data.segmentfaultInfo?.list
   )
@@ -76,28 +79,43 @@ const Recommend = () => {
   }
 
   const onTabChange = (active: string) => {
-    setActive(active)
+    if (process.browser) {
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
+      setActive(active)
+    }
   }
   return (
-    <>
+    <div className={style['recommend-box']}>
+      <Head>
+        <title>推荐-{active === 'segmentfault' ? '思否' : '掘金'} | codedogs</title>
+      </Head>
       <div className={style['tabs']}>
         <div
           onClick={() => {
             onTabChange('segmentfault')
           }}
-          className={classNames(style['tab'], style['sf-tab'])}
+          className={
+            active === 'segmentfault'
+              ? classNames(style['tab'], style['sf-tab'], style['active-tab'])
+              : classNames(style['tab'], style['sf-tab'])
+          }
         >
           <img src='https://qiniu.codedogs.top/article/1626685455000/SegmentFault%20%E6%80%9D%E5%90%A6.png' />
-          思否
+          {width > 700 ? '思否' : ''}
         </div>
         <div
           onClick={() => {
             onTabChange('juejin')
           }}
-          className={classNames(style['tab'], style['jj-tab'])}
+          className={
+            active === 'juejin'
+              ? classNames(style['tab'], style['jj-tab'], style['active-tab'])
+              : classNames(style['tab'], style['jj-tab'])
+          }
         >
           <img src='https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6bdafd801c878b10edb5fed5d00969e9.svg' />
-          掘金
+          {width > 700 ? '掘金' : ''}
         </div>
       </div>
       <div
@@ -142,10 +160,16 @@ const Recommend = () => {
                       </a>
                       <span className={style['split-dot']}></span>
                       <span className={style['creat-time']}>
-                        {moment(Number(item.created + '000')).format(
-                          'MM 月 DD 日'
-                        )}
+                        {dateStr(Number(item.created + '000'))}
                       </span>
+                      <div className={style['like']}>
+                        <ThumbsUp size='18' className={style['icon']} />
+                        {!!item.votes ? item.votes : '赞'}
+                      </div>
+                      <div className={style['comments']}>
+                        <Comments size='18' className={style['icon']} />
+                        {!!item.comments ? item.comments : '评论'}
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -186,11 +210,13 @@ const Recommend = () => {
                             {dateStr(Number(item.article_info.rtime + '000'))}
                           </div>
                           <div className={style['tag-list']}>
-                            {item?.tags?.map((item,index,array) => {
+                            {item?.tags?.map((item, index, array) => {
                               return (
                                 <div key={item.tag_id} className={style['tag']}>
                                   <span>{item.tag_name}</span>
-                                  {index !== array.length-1 && <span className={style['split-dot']}></span>}
+                                  {index !== array.length - 1 && (
+                                    <span className={style['split-dot']}></span>
+                                  )}
                                 </div>
                               )
                             })}
@@ -215,18 +241,39 @@ const Recommend = () => {
                               </a>
                             </div>
                             <ul className={style['action-list']}>
-                              <li className={classNames(style['item view'])}>
+                              <li
+                                className={classNames(
+                                  style['item'],
+                                  style['view']
+                                )}
+                              >
+                                <PreviewOpen
+                                  size='18'
+                                  className={style['icon']}
+                                />
                                 {item.article_info.view_count}
                               </li>
-                              <li className={classNames(style['item like'])}>
+                              <li
+                                className={classNames(
+                                  style['item'],
+                                  style['like']
+                                )}
+                              >
+                                <ThumbsUp size='18' className={style['icon']} />
                                 {item.article_info.digg_count}
                               </li>
-                              <li className={classNames(style['item comment'])}>
+                              <li
+                                className={classNames(
+                                  style['item'],
+                                  style['comment']
+                                )}
+                              >
+                                <Comments size='18' className={style['icon']} />
                                 {item.article_info.comment_count}
                               </li>
                             </ul>
                           </div>
-                          {!!item.article_info.cover_image && (
+                          {(!!item.article_info.cover_image && width > 700) && (
                             <img
                               className={style['thumb']}
                               src={item?.article_info.cover_image}
@@ -243,7 +290,7 @@ const Recommend = () => {
           </ul>
         </InfiniteScroll>
       </div>
-    </>
+    </div>
   )
 }
 

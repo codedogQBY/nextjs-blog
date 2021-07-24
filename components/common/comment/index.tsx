@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 import style from './index.module.scss'
 import { commentModel } from '../../../store/model'
+import { useViewport } from '../../../hooks/viewportContext'
 import markdown from '../../../untils/marked'
 import CommentInput from './components/comment-input'
 import useClickOutsize from '../../../hooks/useClickOutside'
@@ -45,6 +46,7 @@ const dateStr = (date: number) => {
 }
 
 const Comment: FC<{ post_id: number }> = ({ post_id }) => {
+  const {width} = useViewport()
   const [likeComments, setLikeComments] = useState<string[]>([])
   const [replyId, setReplyId] = useState<number>(-1)
   const comments = commentModel.useData((data) => data.data.data)
@@ -142,7 +144,6 @@ const Comment: FC<{ post_id: number }> = ({ post_id }) => {
         const likes = [...likeComments]
         likes.push(comment._id)
         setLikeComments(likes)
-        commentModel.loadCommentsByPostId({ post_id })
         localStorage.setItem('LIKE_COMMENTS', JSON.stringify(likes))
       })
       .catch((err) => {
@@ -206,7 +207,7 @@ const Comment: FC<{ post_id: number }> = ({ post_id }) => {
                       }}
                       className={style['replay']}
                     >
-                      <CommentOne size='18' className={style['icon']} />回复
+                      <CommentOne size='18' className={style['icon']} />{'  '}回复
                     </div>
                   </div>
                 </div>
@@ -282,7 +283,7 @@ const Comment: FC<{ post_id: number }> = ({ post_id }) => {
                               }}
                               className={style['children-replay']}
                             >
-                              <CommentOne size='18' className={style['icon']} />回复
+                              <CommentOne size='18' className={style['icon']} />{'  '}回复
                             </div>
                           </div>
                         </div>

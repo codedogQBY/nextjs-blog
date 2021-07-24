@@ -1,45 +1,54 @@
 @import '../../../styles/mixin';
 @import '../../../styles/variables';
 .nav-box {
-  @include flexBox(flex-start, center);
-}
-.nav-item {
-  padding: $size-width2 $size-width3;
-  cursor: pointer;
-  &:hover {
-    .sub-nav {
-      height: $size-width2 * 8 + 20 * 4;
-    }
-  }
-  a{
+  .nav-item {
+    display: inline-block;
+    padding: $size-width2 $size-width3;
+    cursor: pointer;
     &:hover {
-      color: rgb(200, 200, 200);
+      .sub-nav {
+        height: $size-width2 * 8 + 1.25 * 4;
+      }
     }
-  }
-  > .sub-nav {
-    overflow: hidden;
-    height: 0;
-    transition: height 1s;
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    text-align: center;
-    background: rgb(26, 27, 29);
-    > .sub-nav-item {
-      width: 3rem;
-      padding: $size-width2;
-      display: inline-block;
-      cursor: pointer;
+    a {
       &:hover {
-        background: rgb(88, 89, 92);
+        color: rgb(200, 200, 200);
+      }
+    }
+    > .sub-nav {
+      overflow: hidden;
+      height: 0;
+      transition: height 1s;
+      position: absolute;
+      z-index: 100;
+      left: 0;
+      text-align: center;
+      background: rgb(26, 27, 29);
+      > .sub-nav-item {
+        width: 3rem;
+        padding: $size-width2;
+        display: inline-block;
+        cursor: pointer;
+        &:hover {
+          background: rgb(88, 89, 92);
+        }
       }
     }
   }
 }
 
 // 移动
-@media (max-width: 500px) {
-  .nav-item {
-    padding: $size-width2 $size-width1;
+@media (max-width: 700px) {
+  .nav-box {
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    position: relative;
+    text-align: justify;
+    @include scrollBar($height: 2px);
+    .nav-item {
+      padding: $size-width2 $size-width3;
+      cursor: pointer;
+    }
   }
 }

@@ -4,6 +4,7 @@ import Message from '../../components/common/message/Message'
 
 interface IList {
   comments: number
+  votes:number
   cover: null | string
   created: number
   id: number

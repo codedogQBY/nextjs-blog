@@ -6,7 +6,8 @@ import { getArts } from '../../api'
 import { useRouter } from 'next/router'
 import Line from '../../components/common/line/line'
 import style from './search.module.scss'
-import {Search as SearchIcon} from '@icon-park/react'
+import { Search as SearchIcon } from '@icon-park/react'
+import Head from 'next/head'
 const Search = () => {
   const router = useRouter()
   const { keyWord } = router.query
@@ -43,9 +44,12 @@ const Search = () => {
   }
   return (
     <>
+      <Head>
+        <title>搜索[{' ' + keyWord + ' '}]| codedogs</title>
+      </Head>
       <p className={style['line-box']}>
         <span className={style['line-title']}>
-          <SearchIcon size="18"  className={style['icon']} />
+          <SearchIcon size='18' className={style['icon']} />
           {keyWord}
         </span>
         <Line

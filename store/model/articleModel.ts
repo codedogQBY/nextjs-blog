@@ -35,7 +35,7 @@ class ArticleModel extends Model<Data> {
           page_size: 0,
           total: 0,
           current_page: 0,
-          total_page:0
+          total_page: 0
         },
         list: []
       },
@@ -46,7 +46,7 @@ class ArticleModel extends Model<Data> {
           page_size: 0,
           total: 0,
           current_page: 0,
-          total_page:0
+          total_page: 0
         },
         list: []
       },
@@ -116,7 +116,7 @@ class ArticleModel extends Model<Data> {
     state.fetch = false
   })
 
-  SET_DETAILS = this.action((state, data: Article) => {    
+  SET_DETAILS = this.action((state, data: Article) => {
     state.details = data
   })
 
@@ -188,7 +188,7 @@ class ArticleModel extends Model<Data> {
   // 喜欢文章
   likeArt = this.compose(async (data: Article) => {
     const res = likeArt({
-      ...data,
+      _id: data._id,
       type: 0
     })
     return res

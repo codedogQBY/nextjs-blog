@@ -23,10 +23,8 @@ header {
   width: 50rem;
   margin: 0 auto;
   margin-top: $size-width1 * 12;
-  min-height: calc(100vh - 148px);
-  transform: translateZ(0);
+  min-height: calc(100vh - 9.25rem);
 }
-
 a {
   text-decoration: none;
   color: #ebebeb;
@@ -46,49 +44,50 @@ ul {
 }
 
 // 移动
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .container {
-    margin-top: $size-width1 * 8;
+    margin-top: 10rem;
     width: 25rem;
   }
 }
 
-input,textarea{
-  padding: 8px 0;
-  padding-left: 10px;
-  color: #FFF;
-  border: 1px solid #696969;
-  background: transparent;
-  outline: none;
-  border-radius: 4px;
-  margin-bottom: 16px;
-  &:focus{
-    border: 1px solid #FFF; 
-  }
-}
-label{
-  width: 64px;
-  color: #FFF;
-  &::before{
-    content: '';
-    margin-right: 12px;
-  }
-}
-label.require{
-  position: relative;
-  &::before{
-    content: '*';
-    color: #E71D36;
-    margin-right: 4px;
-  }
-}
+
 
 // 弹框表单
 .friend-form,.hero-form{
+  input,textarea{
+    padding: .5rem 0;
+    padding-left: .625rem;
+    color: #FFF;
+    border: 1px solid #696969;
+    background: transparent;
+    outline: none;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    &:focus{
+      border: 1px solid #FFF; 
+    }
+  }
+  label{
+    width: 4rem;
+    color: #FFF;
+    &::before{
+      content: '';
+      margin-right: 0.625rem;
+    }
+  }
+  label.require{
+    position: relative;
+    &::before{
+      content: '*';
+      color: #E71D36;
+      margin-right: 0.25rem;
+    }
+  }
   .form-item{
     display: flex;
   }
   input,textarea{
-    width: calc(100% - 10px);
+    width: calc(100% - 0.625rem);
   }
 }

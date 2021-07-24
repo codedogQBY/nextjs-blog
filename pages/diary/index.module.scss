@@ -9,9 +9,9 @@
   .info-bar {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 0.875rem;
     .time {
-      font-size: 12px;
+      font-size: 0.75rem;
       color: #acacac;
     }
   }
@@ -24,11 +24,18 @@
     justify-content: flex-end;
     margin: 2rem 0 0 0;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.875rem;
     .icon {
       display: inline-block;
       vertical-align: middle;
       margin-right: 0.5rem;
     }
+  }
+}
+
+// 移动
+@media (max-width: 700px) {
+  .diary-item {
+    width: 100%;
   }
 }

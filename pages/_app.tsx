@@ -1,18 +1,20 @@
-import React,{FC} from 'react'
+import React, { FC } from 'react'
 import type { AppProps /*, AppContext */ } from 'next/app'
 import { useEffect } from 'react'
 import '../styles/global.scss'
 import Head from '../components/layouts/header/header'
 import Footer from '../components/layouts/footer/footer'
 import Header from 'next/head'
-import { Provider } from '@redux-model/react';
+import { ViewportProvider,useViewport } from '../hooks/viewportContext'
+import { Provider } from '@redux-model/react'
 import { store } from '../store/store'
-import { tagModel } from '../store/model' 
-import {linkModel} from '../store/model'
+import { tagModel } from '../store/model'
+import { linkModel } from '../store/model'
+import ToTop from '../components/common/ToTop'
 import '../styles/article.scss'
 
-
-const App : FC<AppProps> = ({ Component, pageProps }: AppProps)=>{
+const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
+  const {width} = useViewport()
   const handleCopy = () => {
     // 获取选区部分
     const selection = window.getSelection()
@@ -42,7 +44,7 @@ const App : FC<AppProps> = ({ Component, pageProps }: AppProps)=>{
     }, 0)
   }
   // 复制添加版权
-  useEffect(() => {    
+  useEffect(() => {
     tagModel.getTag()
     linkModel.getLink()
     window.addEventListener('copy', handleCopy)
@@ -52,18 +54,21 @@ const App : FC<AppProps> = ({ Component, pageProps }: AppProps)=>{
   }, [])
   return (
     <Provider store={store}>
-      <Header>
-        <title>我的博客</title>
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
-        ></meta>
-      </Header>
-      <Head />
-      <div className='container'>
-        <Component {...pageProps} />
-      </div>
-      <Footer />
+      <ViewportProvider>
+        <Header>
+          <title>我的博客</title>
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+          ></meta>
+        </Header>
+        <Head />
+        <div className='container'>
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+        <ToTop />
+      </ViewportProvider>
     </Provider>
   )
 }

@@ -5,7 +5,8 @@ import moment from '_moment@2.29.1@moment'
 import { diaryModel } from '../../store/model'
 import style from './index.module.scss'
 import { Diary as DiaryType } from '../../type'
-import {Like} from '@icon-park/react'
+import { Like } from '@icon-park/react'
+import Head from 'next/head'
 
 const Diary = () => {
   const [likeDiaries, setLikeDiaries] = useState<string[]>([])
@@ -78,6 +79,9 @@ const Diary = () => {
   }
   return (
     <>
+      <Head>
+        <title>日记 | codedogs</title>
+      </Head>
       <InfiniteScroll
         initialLoad={false}
         pageStart={2}
@@ -105,7 +109,7 @@ const Diary = () => {
                 style={diaryLiked(item._id) ? { color: '#F25F5C' } : {}}
               >
                 <div className={style['like']}>
-                <Like size="18" className={style['icon']}/>
+                  <Like size='18' className={style['icon']} />
                   {item.likes}人点赞
                 </div>
               </div>
