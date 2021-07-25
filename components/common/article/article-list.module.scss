@@ -1,39 +1,110 @@
 @import '../../../styles/mixin';
 @import '../../../styles/variables';
 .list-box {
+  display: flex;
+  flex-wrap: wrap;
+  background: #191c1f;
+  margin-bottom: 2rem;
+  border-radius: 8px;
   position: relative;
-  margin-bottom: $size-width1 * 7;
-  .title {
-    > a {
-      color: #d3d3d3;
+  z-index: 2;
+  .box-img {
+    width: 22.5rem;
+    height: 12.65rem;
+    img {
+      border-radius: 8px 0 0 8px;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
     }
-    @include ellipsis(1);
   }
-  .introduction {
-    min-height: 4rem;
-    color: #c0c0c0;
-    @include ellipsis(4);
-  }
-  .meta {
-    color: #a7a7a7;
-    font-size: 0.8rem;
-    margin-bottom: $size-width4;
-    span {
-      display: inline-block;
-      margin: $size-width1;
-      &:first-child {
-        margin-left: 0;
+  .box-content {
+    flex: 1;
+    margin: 0 1rem 0 2rem;
+    .title {
+      cursor: pointer;
+      h3 {
+        width: 27.5rem;
+        @include ellipsis(1);
+        margin: 0.8rem 0;
+      }
+    }
+    .tags {
+      margin-bottom: 0.5rem;
+      font-size: 13px;
+      color: #ebebeb;
+      .tag {
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+    }
+    .introduction {
+      cursor: pointer;
+      text-indent: 2rem;
+      line-height: 1.5rem;
+      height: 4.2rem;
+      @include ellipsis(3);
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      .info {
+        .views {
+          margin-left: 0.25rem;
+          margin-right: 1rem;
+          .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
+        }
+        .likes {
+          margin-left: 0.25rem;
+          margin-right: 1rem;
+          .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
+        }
+        .comments {
+          margin-left: 0.25rem;
+          .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+      .time {
+        cursor: pointer;
       }
     }
   }
-  .line-bottom {
-    position: relative;
-    left: -4rem;
-  }
-  // 移动
-  @media (max-width: 500px) {
-    .line-bottom {
-      left: -2rem;
+}
+// 移动
+@media (max-width: 700px) {
+  .list-box {
+    .box-img {
+      width: 100%;
+      height: auto;
+      img {
+        border-radius: 8px 8px 0 0;
+      }
+    }
+    .box-content {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 1rem;
+      margin: 0;
+      .title {
+        h3 {
+          width: 100%;
+        }
+      }
+    }
+    .options {
+      padding-bottom: 0.5rem;
     }
   }
 }

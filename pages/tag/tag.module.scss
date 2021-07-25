@@ -1,18 +1,24 @@
-.line-box{
-    display: flex;
-    align-items: center;
-    height: 2rem;
-    padding: .5rem 0;
-    position: relative;
-    .line-title{
-        min-width: 6rem;
-        line-height: 2rem;
-        font-size: 1rem;
-        padding-right: 1.5rem;
-        .icon {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 0.8rem;
-          }
+.line-box {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0.5rem 0;
+  position: relative;
+  .line-title {
+    min-width: 6rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    padding-right: 1.5rem;
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.8rem;
     }
+  }
+}
+
+.hasnomore {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(196, 192, 192);
 }

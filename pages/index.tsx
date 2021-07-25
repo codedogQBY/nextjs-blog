@@ -1,32 +1,75 @@
-import { useState, useEffect } from 'react'
-import Tags from '../components/common/tags'
-import Line from '../components/common/line/line'
-import Year from '../components/common/year/year'
-import { sietmapModel } from '../store/model'
+import { useEffect, useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroller'
+import ArticleListItem from '../components/common/article/article-list-item'
+import Loading from '../components/common/loading/loading'
+import style from './index.module.scss'
 import Head from 'next/head'
+import { articleModel } from '../store/model'
+import { sietmapModel } from '../store/model'
 
-export default function Home() {
-  const articles = sietmapModel.useData((data) => data.art)
+const Index = () => {
+  const option = sietmapModel.useData((data) => data.option)
+  const list = articleModel.useData((data) => data.allArts)
+  const pagination = articleModel.useData((data) => data.art.pagination)
+  const [hasMore, setHasMore] = useState(true)
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
-    sietmapModel.getSitemap()
-  }, [])
+    articleModel.INIT_ALL_ARTS()
+    console.log('init')
 
+    articleModel
+      .getArtList({
+        current_page: 1,
+        page_size: 5
+      })
+      .then((res) => {
+        setPage(2)
+      })
+  }, [])
+  const getMoreData = () => {
+    setLoading(true)
+    const newPage = page + 1
+    articleModel
+      .getArtList({
+        type: 1,
+        current_page: newPage,
+        page_size: 5
+      })
+      .then((res) => {
+        const { current_page, total_page } = pagination
+        setPage(current_page)
+        setLoading(false)
+        if (newPage >= total_page) {
+          setLoading(false)
+          setHasMore(false)
+        }
+      })
+  }
   return (
     <>
       <Head>
-        <title>归档 | codedogs</title>
+        <title>前端星空 | codedogs</title>
+        <meta name='description' content={option.descript}></meta>
+        <meta name='keywords' content={option.keyword}></meta>
       </Head>
-      <Tags />
-      <Line />
-      {articles.map((item) => {
-        return (
-          <Year
-            key={item.year}
-            year={item.year}
-            monthList={item.monthList}
-          ></Year>
-        )
-      })}
+      <InfiniteScroll
+        initialLoad={false}
+        pageStart={2}
+        loadMore={getMoreData}
+        hasMore={!loading && hasMore}
+      >
+        {list?.map((item) => {
+          return <ArticleListItem key={item.id} article={item} />
+        })}
+        {loading && hasMore && <Loading />}
+        {!!list.length && !loading && !hasMore && (
+          <div className={style['hasnomore']}>滑到底啦~</div>
+        )}
+      </InfiniteScroll>
     </>
   )
 }
+
+export default Index

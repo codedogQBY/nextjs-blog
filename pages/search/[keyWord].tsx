@@ -68,6 +68,7 @@ const Search = () => {
           return <ArticleListItem key={item.id} article={item} />
         })}
         {loading && hasMore && <Loading />}
+        {(!!data.length && loading && !hasMore) && <div className={style['hasnomore']}>滑到底啦~</div>}
       </InfiniteScroll>
     </>
   )

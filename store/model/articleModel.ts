@@ -11,6 +11,7 @@ interface Data {
     pagination: Pagination
     list: Article[]
   }
+  allArts: Article[]
   relativeList: Article[]
   details: Article
   fetch: boolean
@@ -50,7 +51,7 @@ class ArticleModel extends Model<Data> {
         },
         list: []
       },
-
+      allArts: [],
       // 相关文章推荐
       relativeList: [],
 
@@ -105,6 +106,7 @@ class ArticleModel extends Model<Data> {
     ) => {
       state.art = data
       state.fetch = false
+      state.allArts.push(...data.list)
     }
   )
 
@@ -128,6 +130,9 @@ class ArticleModel extends Model<Data> {
     state.relativeList = list.filter((item) => item.id !== state.details.id)
   })
 
+  INIT_ALL_ARTS = this.action((state)=>{
+    state.allArts = []
+  })
   // 获取文章
   getArtList = this.compose(
     async (
@@ -178,7 +183,7 @@ class ArticleModel extends Model<Data> {
   // 根据条件获取文章
   getRelativeList = this.compose(async () => {
     const list = await getArts({
-      tag: this.data.details.tag[0]._id || 0,
+      tag: (this.data.details.tag[0]._id || 0) as string,
       current_page: 1,
       page_size: 4
     })

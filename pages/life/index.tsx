@@ -4,6 +4,7 @@ import ArticleListItem from '../../components/common/article/article-list-item'
 import Loading from '../../components/common/loading/loading'
 import { getArts } from '../../api'
 import Head from 'next/head'
+import style from './index.module.scss'
 const Life = () => {
   const [hasMore, setHasMore] = useState(true)
   const [data, setData] = useState([])
@@ -52,6 +53,7 @@ const Life = () => {
           return <ArticleListItem key={item.id} article={item} />
         })}
         {loading && hasMore && <Loading />}
+        {(!!data.length && !loading && !hasMore) && <div className={style['hasnomore']}>滑到底啦~</div>}
       </InfiniteScroll>
     </>
   )

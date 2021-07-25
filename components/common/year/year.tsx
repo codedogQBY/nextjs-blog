@@ -69,7 +69,7 @@ const Year: FC<YearProps> = (props) => {
                   </Link>
                   <Link href={`/article/${article._id}`}>
                     <a>
-                      <div>{article.title}</div>
+                      <div className={style['title']}>{article.title}</div>
                     </a>
                   </Link>
                 </div>

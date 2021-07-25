@@ -21,10 +21,12 @@ const Code = () => {
   const [tag, setTag] = useState<Tag>({ name: '', descript: '' })
   const tags = tagModel.useData((data) => data.data.list)
   useEffect(() => {
+    if(!id) return
     const tag = tags.find((item) => item._id === id)
     setTag(tag)
   }, [tags, id])
   useEffect(() => {
+    if(!id) return
     getArts({
       tag: id as string,
       current_page: 1,
@@ -32,7 +34,7 @@ const Code = () => {
     }).then((res) => {
       setData(res.result.list)
     })
-  }, [])
+  }, [id])
   const getMoreData = () => {
     setLoading(true)
     const newPage = page + 1
@@ -77,6 +79,7 @@ const Code = () => {
           return <ArticleListItem key={item.id} article={item} />
         })}
         {loading && hasMore && <Loading />}
+        {(!!data.length && loading && !hasMore) && <div className={style['hasnomore']}>滑到底啦~</div>}
       </InfiniteScroll>
     </>
   )

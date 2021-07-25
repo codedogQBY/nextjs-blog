@@ -9,21 +9,24 @@ body {
   color: #ebebeb;
   @include scrollBar($width: 5px);
   position: relative;
+  // overflow-x: hidden;
 }
 header {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 9999999;
   transition: transform 0.5s;
-  background: rgb(40, 44, 50);
+  // background: rgb(40, 44, 50);
 }
 .container {
+  position: relative;
+  z-index: 2;
   display: block;
-  width: 50rem;
+  width: 55rem;
   margin: 0 auto;
   margin-top: $size-width1 * 12;
-  min-height: calc(100vh - 9.25rem);
+  min-height: calc(100vh - 11rem);
 }
 a {
   text-decoration: none;
@@ -35,11 +38,59 @@ ul {
   list-style: none;
 }
 
-// 平板端
-@media (max-width: 800px) {
-  html,
-  body {
-    font-size: 12px;
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  .star {
+    display: block;
+    width: 1px;
+    background: transparent;
+    position: relative;
+    opacity: 0;
+    /*过渡动画*/
+    animation: star-fall 3s linear infinite;
+    -webkit-animation: star-fall 3s linear infinite;
+    -moz-animation: star-fall 3s linear infinite;
+    &:after {
+      content: '';
+      display: block;
+      border: 0px solid #fff;
+      border-width: 0px 90px 2px 90px;
+      border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.1);
+      /*变形*/
+      transform: rotate(-45deg) translate3d(1px, 3px, 0);
+      -webkit-transform: rotate(-45deg) translate3d(1px, 3px, 0);
+      -moz-transform: rotate(-45deg) translate3d(1px, 3px, 0);
+      transform-origin: 0% 100%;
+      -webkit-transform-origin: 0% 100%;
+      -moz-transform-origin: 0% 100%;
+    }
+  }
+}
+
+@keyframes star-fall {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(0, 0, 0);
+    -webkit-transform: scale(0.5) translate3d(0, 0, 0);
+    -moz-transform: scale(0.5) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(-200px, 200px, 0);
+    -webkit-transform: translate3d(-200px, 200px, 0);
+    -moz-transform: translate3d(-200px, 200px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2) translate3d(-300px, 300px, 0);
+    -webkit-transform: scale(1.2) translate3d(-300px, 300px, 0);
+    -moz-transform: scale(1.2) translate3d(-300px, 300px, 0);
   }
 }
 
@@ -47,47 +98,49 @@ ul {
 @media (max-width: 700px) {
   .container {
     margin-top: 10rem;
-    width: 25rem;
+    width: 94%;
+    min-height: calc(100vh - 17rem);
   }
 }
 
-
-
 // 弹框表单
-.friend-form,.hero-form{
-  input,textarea{
-    padding: .5rem 0;
-    padding-left: .625rem;
-    color: #FFF;
+.friend-form,
+.hero-form {
+  input,
+  textarea {
+    padding: 0.5rem 0;
+    padding-left: 0.625rem;
+    color: #fff;
     border: 1px solid #696969;
     background: transparent;
     outline: none;
     border-radius: 0.25rem;
     margin-bottom: 1rem;
-    &:focus{
-      border: 1px solid #FFF; 
+    &:focus {
+      border: 1px solid #fff;
     }
   }
-  label{
+  label {
     width: 4rem;
-    color: #FFF;
-    &::before{
+    color: #fff;
+    &::before {
       content: '';
       margin-right: 0.625rem;
     }
   }
-  label.require{
+  label.require {
     position: relative;
-    &::before{
+    &::before {
       content: '*';
-      color: #E71D36;
+      color: #e71d36;
       margin-right: 0.25rem;
     }
   }
-  .form-item{
+  .form-item {
     display: flex;
   }
-  input,textarea{
+  input,
+  textarea {
     width: calc(100% - 0.625rem);
   }
 }

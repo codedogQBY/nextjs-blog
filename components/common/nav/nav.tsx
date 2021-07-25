@@ -18,7 +18,7 @@ const Nav = () => {
       name: '文章',
       url: '/',
       children: [
-        { name: '全部', url: '/' },
+        { name: '归档', url: '/file' },
         { name: '技术', url: '/code' },
         { name: '生活', url: '/life' },
         { name: '规划', url: '/plan' },
@@ -37,6 +37,7 @@ const Nav = () => {
     { name: '技术', url: '/code' },
     { name: '生活', url: '/life' },
     { name: '规划', url: '/plan' },
+    { name: '归档', url: '/file' },
     { name: '日记', url: '/diary' },
     { name: '推荐', url: '/recommend' },
     { name: '友链', url: '/friend' },

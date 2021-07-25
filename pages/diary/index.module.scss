@@ -6,6 +6,8 @@
   border-radius: 5px;
   margin-bottom: 1rem;
   padding: 1rem;
+  position: relative;
+  z-index: 2;
   .info-bar {
     display: flex;
     justify-content: space-between;
@@ -32,7 +34,11 @@
     }
   }
 }
-
+.hasnomore{
+  text-align: center;
+  font-size: 14px;
+  color: rgb(196, 192, 192);
+}
 // 移动
 @media (max-width: 700px) {
   .diary-item {

@@ -82,6 +82,7 @@
           .options-tool {
             display: flex;
             flex: 1;
+            font-size: 0.875rem;
             .enjoin,
             .img,
             .link,
@@ -171,5 +172,43 @@
   input,
   textarea {
     width: calc(100% - 0.625rem);
+  }
+}
+
+// 移动
+@media (max-width: 700px) {
+  .comment-input-box {
+    .content-box {
+      .user-form {
+        .user-info {
+          margin-right: .5rem;
+          button {
+            width: 4rem;
+            box-sizing: border-box;
+            font-size: 12px;
+          }
+        }
+        .input-area {
+          .options-box {
+            .options-tool {
+              font-size: 12px;
+
+              .enjoin,
+              .img,
+              .link,
+              .code {
+                width: 2rem;
+                margin-right: 1.5rem;
+              }
+            }
+            .options-enter {
+              box-sizing: border-box;
+              width: 5.5rem;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
   }
 }

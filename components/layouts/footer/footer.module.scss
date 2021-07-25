@@ -14,8 +14,20 @@
     margin: 0 $size-width2;
     background-color: #b7b7b7;
   }
-  // 移动
-  @media (max-width: 500px) {
+}
+
+// 移动
+@media (max-width: 500px) {
+  .footer-box {
+    .footer-content {
+      flex-wrap: wrap;
+      .copy {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    }
     .point {
       width: 3px;
       height: 3px;

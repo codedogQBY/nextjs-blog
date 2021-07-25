@@ -1,6 +1,6 @@
 import { Model } from '@redux-model/react'
 import { getTag } from '../../api'
-import {Pagination,Tag} from '../../type'
+import { Pagination, Tag } from '../../type'
 
 //_id: string
 // 标签名称
@@ -9,7 +9,7 @@ import {Pagination,Tag} from '../../type'
 
 interface Data {
   data: {
-    pagination:Pagination
+    pagination: Pagination
     list: Tag[]
   }
 }
@@ -21,6 +21,7 @@ class TagModel extends Model<Data> {
     }
   }
   SET_TAG = this.action((state, data) => {
+    data.list = data.list.filter((item) => item.count !== 0)
     state.data = data
   })
 

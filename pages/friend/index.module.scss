@@ -1,25 +1,59 @@
 .friends-box {
-  button{
-    padding: .5rem 1rem;
-    border-radius:5px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-  }
   position: relative;
   padding: 1rem;
   // background: #191c1f;
   margin-bottom: 2.5rem;
   border-radius: 5px;
   overflow: hidden;
-  .add-link{
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-color: #14213D;
-    color: lightgray;
-    &:focus{
-      background-color: #1e2844;
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  .instructions {
+    width: 100%;
+    min-height: 10rem;
+    margin-bottom: 2rem;
+    padding: 2rem 0 0.5rem 0;
+    background: #191c1f;
+    border-radius: 5px;
+    .link {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4rem;
+      .link-box {
+        user-select: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-top: 1px solid #696969;
+        border-bottom: 1px solid #696969;
+        width: 8rem;
+        .add-link {
+          margin: 0.5rem 0;
+          background-color: #14213d;
+          color: lightgray;
+          &:focus {
+            background-color: #1e2844;
+          }
+        }
+      }
+    }
+
+    .text {
+      margin-left: 5rem;
+      h4{
+        margin: 0;
+        margin-left: 1rem;
+      }
+      p {
+        margin-left: 1rem;
+        line-height: 2rem;
+      }
     }
   }
   .title {
@@ -30,9 +64,11 @@
     padding: 0;
     margin: 0;
     ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       li {
-        float: left;
-        width: 50%;
+        width: 48%;
         position: relative;
         transition: all 0.3s ease-out;
         border-radius: 5px;
@@ -43,11 +79,8 @@
           padding: 0 10px 0 90px;
           height: 5rem;
           overflow: hidden;
+          background: #191c1f;
           border-radius: 5px;
-          &:hover{
-            border-radius: 5px;
-            background:lighten( #41556d,0.5)
-          }
           img {
             width: 3.75rem;
             height: 3.75rem;
@@ -59,7 +92,7 @@
             margin: 0;
             border: 0;
             transition: all 0.3s ease-out;
-            &:hover{
+            &:hover {
               transform: rotate(90deg);
             }
           }
@@ -79,6 +112,25 @@
             font-size: 1rem;
           }
         }
+      }
+    }
+  }
+}
+
+// 移动
+@media (max-width: 700px) {
+  .friends-box {
+    .links {
+      ul {
+        li {
+          width: 100%;
+        }
+      }
+    }
+    .instructions {
+      margin-bottom: 0;
+      .text {
+        margin-left: 1rem;
       }
     }
   }

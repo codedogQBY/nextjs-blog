@@ -5,16 +5,23 @@ import '../styles/global.scss'
 import Head from '../components/layouts/header/header'
 import Footer from '../components/layouts/footer/footer'
 import Header from 'next/head'
-import { ViewportProvider,useViewport } from '../hooks/viewportContext'
+import { ViewportProvider } from '../hooks/viewportContext'
 import { Provider } from '@redux-model/react'
 import { store } from '../store/store'
 import { tagModel } from '../store/model'
 import { linkModel } from '../store/model'
+import { sietmapModel } from '../store/model'
 import ToTop from '../components/common/ToTop'
 import '../styles/article.scss'
 
+// 封装随机数方法
+function randomDistance(max: number, min: number) {
+  var distance = Math.floor(Math.random() * (max - min + 1) + min)
+  return distance
+}
+
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
-  const {width} = useViewport()
+  const starts = new Array(36).fill(0)
   const handleCopy = () => {
     // 获取选区部分
     const selection = window.getSelection()
@@ -47,6 +54,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     tagModel.getTag()
     linkModel.getLink()
+    sietmapModel.getOpt()
     window.addEventListener('copy', handleCopy)
     return () => {
       window.removeEventListener('copy', handleCopy)
@@ -61,7 +69,25 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
             name='viewport'
             content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
           ></meta>
+          <meta http-equiv='window-target' content='_top'></meta>
+          <meta name="author" content="codeDog"></meta>
+          <meta name="robots" content="all"></meta>
         </Header>
+        <div id='stars'>
+          {starts.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className={'star'}
+                style={{
+                  top: randomDistance(500, -100) + 'px',
+                  left: randomDistance(2400, 0) + 'px',
+                  animationDelay: index % 6 == 0 ? '0s' : index * 0.8 + 's'
+                }}
+              ></div>
+            )
+          })}
+        </div>
         <Head />
         <div className='container'>
           <Component {...pageProps} />

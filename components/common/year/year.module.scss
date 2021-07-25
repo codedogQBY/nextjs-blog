@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixin';
 .year-list {
   .mouth-list {
     margin-left: $size-width4;
@@ -19,6 +20,9 @@
       .tag {
         margin-right: $size-width2;
       }
+      .title{
+        @include ellipsis(1)
+      }
     }
   }
   // 移动
@@ -36,6 +40,9 @@
         .date,
         .tag {
           margin-right: $size-width1;
+        }
+        .title{
+          width: 14rem;
         }
       }
     }

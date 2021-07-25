@@ -76,13 +76,13 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        font-size: 14px;
+        font-size: 0.875rem;
         .time {
-          flex: 5;
+          flex: 7;
         }
         .like {
           cursor: pointer;
-          flex: 2;
+          flex: 1;
           .icon {
             display: inline-block;
             vertical-align: middle;
@@ -91,7 +91,7 @@
         }
         .replay {
           cursor: pointer;
-          flex: 3;
+          flex: 2;
           .icon {
             display: inline-block;
             vertical-align: middle;
@@ -178,13 +178,13 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        font-size: 14px;
+        font-size: 0.875rem;
         .children-time {
-          flex: 5;
+          flex: 7;
         }
         .children-like {
           cursor: pointer;
-          flex: 2;
+          flex: 1;
           .icon {
             display: inline-block;
             vertical-align: middle;
@@ -193,11 +193,45 @@
         }
         .children-replay {
           cursor: pointer;
-          flex: 3;
+          flex: 2;
           .icon {
             display: inline-block;
             vertical-align: middle;
             margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 移动
+@media (max-width: 700px) {
+  .comment-list {
+    .comment-list-item {
+      .options-info {
+        .time {
+          flex: 5 !important;
+        }
+        .like {
+          flex: 2 !important;
+        }
+        .replay {
+          flex: 3 !important;
+        }
+      }
+    }
+    .children-list-item {
+      .children-info {
+        .children-options-info {
+          .children-time {
+            flex: 5 !important;
+          }
+          .children-like {
+            flex: 2 !important;
+          }
+          .children-replay {
+            flex: 3 !important;
           }
         }
       }

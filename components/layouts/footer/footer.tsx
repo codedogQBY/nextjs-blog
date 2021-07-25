@@ -6,7 +6,7 @@ const Footer = () => {
       <Line height={1} color='#696969'></Line>
       <section className={style['footer-box']}>
         <p className={style['footer-content']}>
-          ©粤ICP备20050365号<span className={style['point']}></span>{' '}
+         <span className={style['copy']}> ©粤ICP备20050365号</span><span className={style['point']}></span>{' '}
           {new Date().getUTCFullYear()}
           <span className={style['point']}></span>
           <a target='_brank' href='https://github.com/codedogQBY'>
