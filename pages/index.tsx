@@ -17,8 +17,6 @@ const Index = () => {
 
   useEffect(() => {
     articleModel.INIT_ALL_ARTS()
-    console.log('init')
-
     articleModel
       .getArtList({
         current_page: 1,
