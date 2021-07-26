@@ -2,7 +2,7 @@ import { useState, useEffect, memo, useMemo, FC } from 'react'
 import { useRouter } from 'next/router'
 import markdown from '../../untils/marked'
 import { articleModel } from '../../store/model'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import Line from '../../components/common/line/line'
 import Link from 'next/link'
 import style from './index.module.scss'
@@ -85,7 +85,7 @@ const Article = () => {
           </div>
           <div className={style['article-data']}>
             <span className={style['time']}>
-              {moment(article.create_at).format('yyyy . MM . DD  HH:mm:ss')}
+              {dayjs(article.create_at).format('yyyy . MM . DD  HH:mm:ss')}
             </span>
             <span className={style['likes']}>喜欢 {article?.meta?.likes}</span>
             <span className={style['sumComments']}>
@@ -142,7 +142,7 @@ const Article = () => {
                 <Link href={`/article/${item._id}`}>
                   <a>
                     <span className={style['item-time']}>
-                      {moment(item.update_at).format('yyyy-MM-DD HH:mm:ss')}
+                      {dayjs(item.update_at).format('yyyy-MM-DD HH:mm:ss')}
                     </span>
                     <span className={style['item-title']}>{item.title}</span>
                   </a>

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import style from './article-list.module.scss'
 import { Article } from '../../../type'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { ThumbsUp, Eyes, Comments } from '@icon-park/react'
 import Link from 'next/link'
 
@@ -53,7 +53,7 @@ const ArticleListItem: FC<{ article: Article }> = (props) => {
           </div>
           <div className={style['time']}>
             <Link href={`/file`}>
-              <a>{moment(article.create_at).format('YYYY . MM . DD')}</a>
+              <a>{dayjs(article.create_at).format('YYYY . MM . DD')}</a>
             </Link>
           </div>
         </div>

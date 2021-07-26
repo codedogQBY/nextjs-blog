@@ -1,4 +1,4 @@
-import style from './/header.module.scss'
+import style from './header.module.scss'
 import Nav from '../../common/nav/nav'
 import {
   useState,
@@ -8,7 +8,7 @@ import {
   ChangeEvent,
   KeyboardEvent
 } from 'react'
-import router from '_next@10.2.3@next/router'
+import router from 'next/router'
 import {Search} from '@icon-park/react'
 import { useViewport } from '../../../hooks/viewportContext'
 

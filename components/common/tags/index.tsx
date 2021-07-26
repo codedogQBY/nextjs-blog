@@ -1,5 +1,4 @@
 import untilStyle from '../../../styles/untils.module.scss'
-import { useEffect } from 'react'
 import style from './index.module.scss'
 import classnames from 'classnames'
 import Link from 'next/link'

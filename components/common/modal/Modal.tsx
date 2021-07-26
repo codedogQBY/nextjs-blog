@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState, useEffect } from 'react'
+import React, { FC,  useState, useEffect } from 'react'
 import style from './modal.module.scss'
 import { createPortal } from 'react-dom'
 import {Close} from '@icon-park/react'

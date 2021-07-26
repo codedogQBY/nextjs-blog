@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import type { AppProps /*, AppContext */ } from 'next/app'
+import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import '../styles/global.scss'
 import Head from '../components/layouts/header/header'
@@ -69,7 +69,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
             name='viewport'
             content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
           ></meta>
-          <meta http-equiv='window-target' content='_top'></meta>
+          <meta httpEquiv='window-target' content='_top'></meta>
           <meta name="author" content="codeDog"></meta>
           <meta name="robots" content="all"></meta>
         </Header>

@@ -9,7 +9,6 @@ import React, {
 } from 'react'
 import style from './index.module.scss'
 import { commentModel } from '../../../store/model'
-import { useViewport } from '../../../hooks/viewportContext'
 import markdown from '../../../untils/marked'
 import CommentInput from './components/comment-input'
 import useClickOutsize from '../../../hooks/useClickOutside'

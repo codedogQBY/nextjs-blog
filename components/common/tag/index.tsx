@@ -1,4 +1,4 @@
-import { FC, ReactChildren, PropsWithChildren } from 'react'
+import { FC, ReactChildren } from 'react'
 import classNames from 'classnames'
 import style from './index.module.scss'
 interface ITag {

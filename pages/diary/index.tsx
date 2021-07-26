@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import Loading from '../../components/common/loading/loading'
-import moment from '_moment@2.29.1@moment'
+import dayjs from 'dayjs'
 import { diaryModel } from '../../store/model'
 import style from './index.module.scss'
 import { Diary as DiaryType } from '../../type'
@@ -94,7 +94,7 @@ const Diary = () => {
               <div className={style['info-bar']}>
                 <div className={style['weather']}>{item.weather}</div>
                 <div className={style['time']}>
-                  {moment(item.create_at).format('YYYY-MM-DD HH : mm : ss')}
+                  {dayjs(item.create_at).format('YYYY-MM-DD HH : mm : ss')}
                 </div>
               </div>
               <p

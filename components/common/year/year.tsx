@@ -1,7 +1,7 @@
 import style from './year.module.scss'
 import Link from 'next/link'
 import { FC } from 'react'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import Tag from '../tag'
 export interface articleItem {
   title: string
@@ -54,7 +54,7 @@ const Year: FC<YearProps> = (props) => {
               return (
                 <div key={article._id} className={style['article-list']}>
                   <span className={style['date']}>
-                    {moment(article.create_at).format('MM.DD')}
+                    {dayjs(article.create_at).format('MM.DD')}
                   </span>
                   <Link href={`/${tagMap.get(article.type).text}`}>
                     <a>

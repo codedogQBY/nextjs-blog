@@ -25,6 +25,6 @@
     "config.js",
     "untils/highlight.js",
     "untils/marked.js"
-, "untils/index.ts"  ],
+, "untils/index.ts", "next.config.js"  ],
   "exclude": ["node_modules"]
 }

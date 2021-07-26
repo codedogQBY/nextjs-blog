@@ -6,8 +6,8 @@ import Modal from '../../components/common/modal'
 import message from '../../components/common/message/Message'
 import style from './index.module.scss'
 import { Hero } from '../../type'
-import classNames from '_classnames@2.3.1@classnames'
-import moment from '_moment@2.29.1@moment'
+import classNames from 'classnames'
+import dayjs from 'dayjs'
 import marked from '../../untils/marked'
 import Head from 'next/head'
 import { useViewport } from '../../hooks/viewportContext'
@@ -134,7 +134,7 @@ const Wall = () => {
                         <div key={item._id} className={style['list']}>
                           <h3 className={style['user']}>
                             <span className={style['user-name']}>
-                              {moment(item.create_time).format(
+                              {dayjs(item.create_time).format(
                                 'yyyy.MM.DD HH:mm'
                               )}
                             </span>
@@ -168,7 +168,7 @@ const Wall = () => {
                         <div key={item._id} className={style['list']}>
                           <h3 className={style['user']}>
                             <span className={style['user-name']}>
-                              {moment(item.create_time).format(
+                              {dayjs(item.create_time).format(
                                 'yyyy.MM.DD HH:mm'
                               )}
                             </span>
@@ -202,7 +202,7 @@ const Wall = () => {
                         <div key={item._id} className={style['list']}>
                           <h3 className={style['user']}>
                             <span className={style['user-name']}>
-                              {moment(item.create_time).format(
+                              {dayjs(item.create_time).format(
                                 'yyyy.MM.DD HH:mm'
                               )}
                             </span>
@@ -238,7 +238,7 @@ const Wall = () => {
                       <div key={item._id} className={style['list']}>
                         <h3 className={style['user']}>
                           <span className={style['user-name']}>
-                            {moment(item.create_time).format(
+                            {dayjs(item.create_time).format(
                               'yyyy.MM.DD HH:mm'
                             )}
                           </span>
