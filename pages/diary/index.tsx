@@ -103,13 +103,16 @@ const Diary = () => {
               ></p>
               <div
                 className={style['like-btn']}
-                onClick={() => {
-                  likeDiary(item)
-                }}
                 style={diaryLiked(item._id) ? { color: '#F25F5C' } : {}}
               >
                 <div className={style['like']}>
-                  <Like size='18' className={style['icon']} />
+                  <Like
+                    size='18'
+                    className={style['icon']}
+                    onClick={() => {
+                      likeDiary(item)
+                    }}
+                  />
                   {item.likes}人点赞
                 </div>
               </div>
@@ -117,7 +120,9 @@ const Diary = () => {
           )
         })}
         {loading && hasMore && <Loading />}
-        {(!!data.length && !loading && !hasMore) && <div className={style['hasnomore']}>滑到底啦~</div>}
+        {!!data.length && !loading && !hasMore && (
+          <div className={style['hasnomore']}>滑到底啦~</div>
+        )}
       </InfiniteScroll>
     </>
   )

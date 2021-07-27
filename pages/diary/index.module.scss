@@ -22,8 +22,10 @@
     padding-left: 1rem;
   }
   .like-btn {
-    display: flex;
-    justify-content: flex-end;
+    display: inline-block;
+    position: absolute;
+    bottom: .3rem;
+    right: 1rem;
     margin: 2rem 0 0 0;
     cursor: pointer;
     font-size: 0.875rem;
