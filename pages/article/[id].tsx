@@ -85,7 +85,7 @@ const Article = () => {
           </div>
           <div className={style['article-data']}>
             <span className={style['time']}>
-              {dayjs(article.create_at).format('yyyy . MM . DD  HH:mm:ss')}
+              {dayjs(article.create_at).format('YYYY . MM . DD  HH:mm:ss')}
             </span>
             <span className={style['likes']}>喜欢 {article?.meta?.likes}</span>
             <span className={style['sumComments']}>
@@ -142,7 +142,7 @@ const Article = () => {
                 <Link href={`/article/${item._id}`}>
                   <a>
                     <span className={style['item-time']}>
-                      {dayjs(item.update_at).format('yyyy-MM-DD HH:mm:ss')}
+                      {dayjs(item.update_at).format('YYYY-MM-DD HH:mm:ss')}
                     </span>
                     <span className={style['item-title']}>{item.title}</span>
                   </a>

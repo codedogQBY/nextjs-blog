@@ -135,7 +135,7 @@ const Wall = () => {
                           <h3 className={style['user']}>
                             <span className={style['user-name']}>
                               {dayjs(item.create_time).format(
-                                'yyyy.MM.DD HH:mm'
+                                'YYYY.MM.DD HH:mm'
                               )}
                             </span>
                           </h3>
@@ -169,7 +169,7 @@ const Wall = () => {
                           <h3 className={style['user']}>
                             <span className={style['user-name']}>
                               {dayjs(item.create_time).format(
-                                'yyyy.MM.DD HH:mm'
+                                'YYYY.MM.DD HH:mm'
                               )}
                             </span>
                           </h3>
@@ -203,7 +203,7 @@ const Wall = () => {
                           <h3 className={style['user']}>
                             <span className={style['user-name']}>
                               {dayjs(item.create_time).format(
-                                'yyyy.MM.DD HH:mm'
+                                'YYYY.MM.DD HH:mm'
                               )}
                             </span>
                           </h3>
@@ -239,7 +239,7 @@ const Wall = () => {
                         <h3 className={style['user']}>
                           <span className={style['user-name']}>
                             {dayjs(item.create_time).format(
-                              'yyyy.MM.DD HH:mm'
+                              'YYYY.MM.DD HH:mm'
                             )}
                           </span>
                         </h3>
