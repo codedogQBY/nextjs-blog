@@ -204,7 +204,7 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
           <div className={style['user']}>
             <div className={style['user-input']}>
               <div className={style['name']}>
-                <label className='require'>称呼</label>
+                <label className={style['require']}>称呼</label>
                 <input
                   type='text'
                   name='name'
@@ -218,7 +218,7 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
                 />
               </div>
               <div className={style['email']}>
-                <label className='require'>邮箱</label>
+                <label className={style['require']}>邮箱</label>
                 <input
                   type='email'
                   name='email'

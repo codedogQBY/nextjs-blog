@@ -19,6 +19,16 @@
         label {
           width: 3.75rem;
         }
+
+        label.require {
+          position: relative;
+          &::before {
+            content: '*';
+            color: #e71d36;
+            margin-right: 0.25rem;
+          }
+        }
+
         input {
           flex: 1;
         }
