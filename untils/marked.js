@@ -1,10 +1,11 @@
-import marked from 'marked';
-import hljs from "highlight.js"
-import 'highlight.js/styles/monokai-sublime.css';
+import marked from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
 
-import { STATIC_PATH } from '../config.js';
+import { STATIC_PATH } from '../config.js'
 
 const languages = [
+  '',
   'cpp',
   'xml',
   'bash',
@@ -23,8 +24,8 @@ const languages = [
   'scss',
   'sql',
   'stylus'
-];
-const renderer = new marked.Renderer();
+]
+const renderer = new marked.Renderer()
 
 marked.setOptions({
   renderer,
@@ -37,22 +38,22 @@ marked.setOptions({
   smartypants: false,
   highlight(code, lang) {
     if (!languages.indexOf(lang)) {
-      return hljs.highlightAuto(code).value;
+      return hljs.highlightAuto(code).value
     }
-    return hljs.highlight(lang, code).value;
+    return hljs.highlight(lang, code).value
   }
-});
+})
 
 // 段落解析
-const paragraphParse = text => {
-  const textIsImage = text.includes('<img');
-  if (textIsImage) return `<div class="image-package">${text}</div>`;
-  return `<p>${text}</p>`;
-};
+const paragraphParse = (text) => {
+  const textIsImage = text.includes('<img')
+  if (textIsImage) return `<div class="image-package">${text}</div>`
+  return `<p>${text}</p>`
+}
 
 // 对图片进行弹窗处理, 及懒加载处理
 const imageParse = (src, title, alt) => {
-  const isCDN = src.includes(STATIC_PATH);
+  const isCDN = src.includes(STATIC_PATH)
 
   if (!isCDN) {
     return `
@@ -67,7 +68,7 @@ const imageParse = (src, title, alt) => {
                 </div>
                 <div class="img-caption">${title || alt || ''}</div>
               </figure>
-            `;
+            `
   }
 
   return `
@@ -90,8 +91,8 @@ const imageParse = (src, title, alt) => {
             </div>
             <div class="img-caption">${title || alt || ''}</div>
           </figure>
-          `;
-};
+          `
+}
 
 const commentImageParse = (src, title, alt) => {
   return `<img
@@ -100,51 +101,59 @@ const commentImageParse = (src, title, alt) => {
             data-src="${src}"
             class="img-pop"/>
           <div class="img-caption">${title || alt || ''}</div>
-          `;
-};
+          `
+}
 
 // 外链
 const linkParse = (href, title, text) => {
   return `<a href="${href}"
              target="${href.substr(0, 1) === '#' ? '_self' : '_blank'}" 
              class="${href.substr(0, 1) === '#' ? '' : 'c-link'}">
-             ${href.substr(0, 1) === '#' ? text : text.length > 40 ? text.slice(0, 40) + '...' : text}
+             ${
+               href.substr(0, 1) === '#'
+                 ? text
+                 : text.length > 40
+                 ? text.slice(0, 40) + '...'
+                 : text
+             }
           </a>`
     .replace(/\s+/g, ' ')
-    .replace('\n', '');
-};
+    .replace('\n', '')
+}
 
-renderer.link = linkParse;
-renderer.paragraph = paragraphParse;
-renderer.image = imageParse;
+renderer.link = linkParse
+renderer.paragraph = paragraphParse
+renderer.image = imageParse
 
- const returnContent = (content, tags, parseHtml = false) => {
+const returnContent = (content, tags, parseHtml = false) => {
   if (typeof content !== 'string') {
-    return '';
+    return ''
   }
 
   // 生成目录树
-  var toc = [];
+  var toc = []
 
-  const headingParse = function(text, level, raw) {
-    var anchor = this.options.headerPrefix + raw.toLowerCase().replace(/[^\w]+/g, '-');
-    if (level >= 4 || level === 1) return `<h${level} id="${anchor}">${text}</h${level}>\n`;
+  const headingParse = function (text, level, raw) {
+    var anchor =
+      this.options.headerPrefix + raw.toLowerCase().replace(/[^\w]+/g, '-')
+    if (level >= 4 || level === 1)
+      return `<h${level} id="${anchor}">${text}</h${level}>\n`
     toc.push({
       anchor: `#header-${toc.length}`,
       level: level,
       text: text
-    });
-    return `<h${level} id="header-${toc.length - 1}">${text}</h${level}>\n`;
-  };
+    })
+    return `<h${level} id="header-${toc.length - 1}">${text}</h${level}>\n`
+  }
 
-  marked.setOptions({ insane: !parseHtml });
+  marked.setOptions({ insane: !parseHtml })
 
-  renderer.heading = headingParse;
+  renderer.heading = headingParse
 
-  let html = marked(content, { renderer });
+  let html = marked(content, { renderer })
 
   // 返回解析内容
-  return { html, toc };
-};
+  return { html, toc }
+}
 
 export default returnContent

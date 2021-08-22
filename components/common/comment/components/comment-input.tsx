@@ -136,12 +136,13 @@ const CommentInput: FC<{ post_id: number; pid?: number; resetId?:()=>void;pid_na
       message({ type: 'error', message: '网址格式不正确，请检查' })
       return
     }
-    setUserInfo({ name, email, site })
+    let info = !!site ? { name, email, site } : {name,email}
+    setUserInfo(info)
     setIsSetInfoFlag(true)
     if (process.browser) {
       window.localStorage.setItem(
         'userInfo',
-        JSON.stringify({ name, email, site })
+        JSON.stringify(info)
       )
     }
   }, [name, email, site])

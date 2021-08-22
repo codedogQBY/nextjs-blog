@@ -70,6 +70,9 @@ const Diary = () => {
       .then((res) => {
         const likes = [...likeDiaries]
         likes.push(diary._id)
+        const list = JSON.parse(JSON.stringify(data))
+        list.find(item=>item._id === diary._id).likes++
+        setData(list)
         setLikeDiaries(likes)
         localStorage.setItem('LIKE_DIARY', JSON.stringify(likes))
       })
