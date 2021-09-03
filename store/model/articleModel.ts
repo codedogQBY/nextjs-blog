@@ -155,6 +155,7 @@ class ArticleModel extends Model<Data> {
             this.SET_ART_SUCCESS(res.result)
           })
         }
+        return res
       } else {
         this.SET_ART_FILE()
       }

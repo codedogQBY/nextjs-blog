@@ -10,7 +10,6 @@ import { sietmapModel } from '../store/model'
 const Index = () => {
   const option = sietmapModel.useData((data) => data.option)
   const list = articleModel.useData((data) => data.allArts)
-  const pagination = articleModel.useData((data) => data.art.pagination)
   const [hasMore, setHasMore] = useState(true)
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -22,24 +21,20 @@ const Index = () => {
         current_page: 1,
         page_size: 5
       })
-      .then((res) => {
-        setPage(2)
-      })
   }, [])
   const getMoreData = () => {
     setLoading(true)
     const newPage = page + 1
     articleModel
       .getArtList({
-        type: 1,
         current_page: newPage,
         page_size: 5
       })
       .then((res) => {
-        const { current_page, total_page } = pagination
-        setPage(current_page)
+        const { current_page, total_page } = res.result.pagination
+        setPage(newPage)
         setLoading(false)
-        if (newPage >= total_page) {
+        if (current_page >= total_page) {
           setLoading(false)
           setHasMore(false)
         }
