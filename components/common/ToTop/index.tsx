@@ -58,7 +58,7 @@ const ToTop = () => {
       {showScroll && (
         <div onClick={scrollTop} className={style['scoll-aside']}>
           <div className={style['scoll-btn']}>
-            <UpC className={style['icon']} size={width > 700 ? '32' : '24'} />
+            <UpC className={style['icon']} size={width > 800 ? '32' : '24'} />
           </div>
         </div>
       )}

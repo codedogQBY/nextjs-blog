@@ -127,7 +127,7 @@
         margin: 1.5rem 0;
         padding-left: 0;
         line-height: 1.8rem;
-        font-weight: 700;
+        font-weight: 800;
         text-indent: 0;
 
         &:target {
@@ -564,7 +564,7 @@
 }
 
 // 移动
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .article-list {
     width: 100%;
     > .article-cont {

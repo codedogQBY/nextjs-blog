@@ -83,7 +83,7 @@
             }
             .name {
               max-width: 4rem;
-              font-weight: 700;
+              font-weight: 800;
               line-height: 0.875rem;
               margin-left: 0.75rem !important;
               margin-right: 0.5rem !important;
@@ -299,7 +299,7 @@
 }
 
 // 移动
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .recommend-box {
     .tabs {
       flex-direction: column;

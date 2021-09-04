@@ -13,7 +13,7 @@ interface INavItem {
 type TNavList = INavItem[]
 const Nav = () => {
   const {width} = useViewport()
-  const navList: TNavList = width > 700 ? [
+  const navList: TNavList = width > 800 ? [
     {
       name: '文章',
       url: '/',

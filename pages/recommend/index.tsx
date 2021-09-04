@@ -74,7 +74,7 @@ const Recommend = () => {
           }
         >
           <img src='https://qiniu.codedogs.top/article/1626685455000/SegmentFault%20%E6%80%9D%E5%90%A6.png' />
-          {width > 700 ? '思否' : ''}
+          {width > 800 ? '思否' : ''}
         </div>
         <div
           onClick={() => {
@@ -87,7 +87,7 @@ const Recommend = () => {
           }
         >
           <img src='https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6bdafd801c878b10edb5fed5d00969e9.svg' />
-          {width > 700 ? '掘金' : ''}
+          {width > 800 ? '掘金' : ''}
         </div>
       </div>
       <div
@@ -246,7 +246,7 @@ const Recommend = () => {
                               </li>
                             </ul>
                           </div>
-                          {(!!item.article_info.cover_image && width > 700) && (
+                          {(!!item.article_info.cover_image && width > 800) && (
                             <img
                               className={style['thumb']}
                               src={item?.article_info.cover_image}

@@ -70,7 +70,7 @@ const Header = () => {
               value={keyword}
               ref={inputRef}
               placeholder='Search'
-              style={ width > 700 && searchOpen ? { opacity: '1', width: '200px' } : {}}
+              style={ width > 800 && searchOpen ? { opacity: '1', width: '200px' } : {}}
               className='search-input'
               onBlur={handleSearchOpen}
               onKeyDown={(e) => {

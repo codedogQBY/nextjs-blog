@@ -125,7 +125,7 @@ const Wall = () => {
             loadMore={getMoreData}
             hasMore={!loading && hasMore}
           >
-            {width > 700 ? (
+            {width > 800 ? (
               <>
                 <div className={style['column']} key='1'>
                   {data.map((item, index) => {
