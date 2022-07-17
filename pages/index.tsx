@@ -43,7 +43,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>前端星空 | codedogs</title>
+        <title>安卓星空 | codedogs</title>
         <meta name='description' content={option.descript}></meta>
         <meta name='keywords' content={option.keyword}></meta>
       </Head>

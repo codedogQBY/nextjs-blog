@@ -11,7 +11,7 @@ const service: AxiosInstance = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    config.headers = {...config.headers,origin: IS_DEV ? 'http://localhost:3000' : 'https://blog.codedogs.top' }
+    config.headers = {...config.headers,origin: IS_DEV ? 'http://localhost:3000' : 'https://a.codedogs.top' }
     return config;
   },
   error => {

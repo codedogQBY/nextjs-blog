@@ -62,7 +62,7 @@ const imageParse = (src, title, alt) => {
                   <div class="progress-image-fill"></div>
                   <img
                     src="${src}"
-                    title="${title || alt || 'blog.codedogs.top'}"
+                    title="${title || alt || 'a.codedogs.top'}"
                     class="image-original"
                     onload="if (window.loadedSmallImg) window.loadedSmallImg(this)"/>
                 </div>

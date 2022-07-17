@@ -121,11 +121,11 @@ const Friend = memo(() => {
             <p>
               名称：codeDogs
               <br />
-              描述：探索前端星空
+              描述：探索安卓星空
               <br />
-              网址：https://blog.codedogs.top
+              网址：https://a.codedogs.top
               <br />
-              头像：https://img.codedogs.top/img.png
+              头像：https://img.codedogs.top/anzhuo.png
               <br />
             </p>
           </div>

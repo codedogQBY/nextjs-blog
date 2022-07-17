@@ -20,8 +20,8 @@ const About = () => {
           <User className={style['icon']} size='18'/>codeDog <br/>
           <Like className={style['icon']} size='18'/>code , game and tourism <br/>
           <Cup className={style['icon']} size='18'/>Hello Word!<br/>
-          <Handbag className={style['icon']} size='18'/>Student / Front End Developer<br/>
-          <ThinkingProblem className={style['icon']} size='18'/>HTML、CSS、JavaScript、React、Vue、NodeJs、TypeScript...<br/>
+          <Handbag className={style['icon']} size='18'/>Android Developer<br/>
+          <ThinkingProblem className={style['icon']} size='18'/>HTML、CSS、JavaScript、Android、Java、PHP、Kotlin...<br/>
         </p>
       </div>
       <div className={style['comment']}>
